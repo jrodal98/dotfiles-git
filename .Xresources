@@ -1,0 +1,77 @@
+! Transparency (0-255)
+! *.alpha: 100
+
+! special
+*.foreground:   #f0d907
+*.background:   #022651
+*.cursorColor:  #fe9000
+
+! black
+*.color0:       #000000
+*.color8:       #db30cd
+
+! red
+*.color1:       #f70202
+*.color9:       #db30cd
+
+! green
+*.color2:       #32f007
+*.color10:      #23fd00
+
+! yellow
+*.color3:       #cecb00
+*.color11:      #fffd00
+
+! blue
+*.color4:       #6aa1dc
+*.color12:      #6aa1dc
+
+! magenta
+*.color5:       #cb1ed1
+*.color13:      #fd28ff
+
+! cyan
+*.color6:       #0dcdcd
+*.color14:      #14ffff
+
+! white
+*.color7:       #e5e5e5
+*.color15:      #ffffff
+
+!! Bim
+!! special
+!*.foreground:   #ffd500
+!*.background:   #012849
+!*.cursorColor:  #ffd500
+!
+!! black
+!*.color0:       #000000
+!*.color8:       #4d4d4d
+!
+!! red
+!*.color1:       #cc0403
+!*.color9:       #3e0605
+!
+!! green
+!*.color2:       #19cb00
+!*.color10:      #23fd00
+!
+!! yellow
+!*.color3:       #cecb00
+!*.color11:      #fffd00
+!
+!! blue
+!*.color4:       #001cd1
+!*.color12:      #0026ff
+!
+!! magenta
+!*.color5:       #cb1ed1
+!*.color13:      #fd28ff
+!
+!! cyan
+!*.color6:       #0dcdcd
+!*.color14:      #14ffff
+!
+!! white
+!*.color7:       #e5e5e5
+!*.color15:      #ffffff
