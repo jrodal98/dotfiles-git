@@ -58,8 +58,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # variables
 
 set $TERMINAL st
-
-
+set $BROWSER brave
+set $IDE code
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -241,6 +241,12 @@ bindsym Control+Print exec maim -s | xclip -selection clipboard -t image/png
 
 # file manager
 bindsym $mod+m exec $TERMINAL -e ranger
+
+# browser
+bindsym $mod+b exec $BROWSER
+
+# ide
+bindsym $mod+c exec $IDE
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 5 # increase screen brightness
