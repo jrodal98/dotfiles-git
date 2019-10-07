@@ -8,6 +8,7 @@ alias open='xdg-open'
 alias todo='todo.sh'
 alias one_monitor='~/.screenlayout/one_display.sh'
 alias two_monitor='~/.screenlayout/dual_monitor.sh'
+alias notepad='nano ~/Notes/notepad.md'
 
 setopt rm_star_silent
 
