@@ -39,7 +39,21 @@ battery_print() {
 
     if [ "$ac" -eq 1 ]; then
         # charging icon
-        icon=""
+        if [ "$battery_percent" -gt 97 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 90 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 80 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 60 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 40 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 20 ]; then
+            icon=""
+        else
+            icon=""
+        fi
 
         if [ "$battery_percent" -gt 97 ]; then
             echo "$icon 100 %"
@@ -48,26 +62,26 @@ battery_print() {
         fi
     else
 
-        if [ "$battery_percent" -gt 90 ]; then
-            icon=""
+        if [ "$battery_percent" -gt 97 ]; then
+            icon=""
+        elif [ "$battery_percent" -gt 90 ]; then
+            icon=""
         elif [ "$battery_percent" -gt 80 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 70 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 60 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 50 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 40 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 30 ]; then
-            icon=""
+            icon=""
         elif [ "$battery_percent" -gt 20 ]; then
-            icon=""
-        elif [ "$battery_percent" -gt 10 ]; then
-            icon=""
+            icon=""
         else
-            icon=""
+            icon=""
         fi
 
         echo "$icon $battery_percent %"
