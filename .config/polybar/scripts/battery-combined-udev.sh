@@ -42,7 +42,7 @@ battery_print() {
         icon=""
 
         if [ "$battery_percent" -gt 97 ]; then
-            echo "$icon"
+            echo "$icon 100 %"
         else
             echo "$icon $battery_percent %"
         fi
