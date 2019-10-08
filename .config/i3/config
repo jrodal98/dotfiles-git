@@ -72,7 +72,7 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
 
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
+bindsym $mod+d exec rofi -show run -fullscreen -lines 5 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
 
 
 
@@ -138,6 +138,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10: Rambox"
+
+
+# set which monitor the workspace goes to
+# first output == highest preference
+
+workspace $ws1 output eDP-1
+workspace $ws2 output DP-2-1 eDP-1
+
+
+
 
 # gaps for specific workspaces
 bindsym $mod+z		gaps outer current plus 5
