@@ -1,4 +1,4 @@
-# Jake's Dotfiles
+# Dotfiles
 
 ![alt text](Pictures/screenshots/desktop.png "My desktop")
 
