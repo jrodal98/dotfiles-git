@@ -1,29 +1,27 @@
 alias copy_to_clipboard='xclip -selection clipboard'
 alias paste_from_clipboard='xclip -o -selection clipboard'
 alias grade_manager='python3 ~/Projects/Grade_Manager/src/gui.py'
-alias fucking='sudo'
 alias fuck='eval "sudo $(fc -ln -1)"'
-alias notify-after='~/.config/scripts/notify-after/notify-after'
-alias backup-system='~/.config/scripts/backup-system/backup-system'
-alias open='xdg-open'
+alias notify-after='/home/jake/.config/scripts/notify-after/notify-after'
+alias backup-system='sudo /home/jake/.config/scripts/backup-system/backup-system'
+# alias open='rifle'
+# alias open='xdg-open'
 alias todo='todo.sh'
-alias one_monitor='~/.screenlayout/one_display.sh'
-alias two_monitor='~/.screenlayout/dual_monitor.sh'
-alias notepad='nano ~/Notes/notepad.md'
+alias notepad='micro ~/Notes/notepad.md'
+alias ce='~/Projects/conf-edit/conf-edit'
 
 setopt rm_star_silent
-
 export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
-export PATH="$HOME/.cargo/bin:$PATH"
-
+export PATH="$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
 plugins=(
   # git
   zsh-syntax-highlighting
-  zsh-autosuggestions  
+  zsh-autosuggestions
+  colored-man-pages  
 )
 
 source $ZSH/oh-my-zsh.sh

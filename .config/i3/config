@@ -71,16 +71,14 @@ bindsym $mod+Return exec $TERMINAL
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-# bindsym $mod+d exec rofi -show run -fullscreen -lines 5 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
 bindsym $mod+d exec rofi -show run
 
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -89,10 +87,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -101,7 +99,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -136,7 +134,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9: Thunderbird"
 set $ws10 "10: Rambox"
 
 
@@ -145,7 +143,7 @@ set $ws10 "10: Rambox"
 
 workspace $ws1 output eDP-1
 workspace $ws2 output DP-2-1 eDP-1
-workspace $ws9 output DP-2-1 eDP-1
+workspace $ws8 output DP-2-1 eDP-1
 
 
 # gaps for specific workspaces
@@ -166,7 +164,7 @@ bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
+bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
@@ -178,7 +176,7 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # assign applications to windows
@@ -186,6 +184,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # copy second string from WM_CLASS(STRING)
 
 # assign [class="Brave-browser"] $ws1
+assign [class="Thunderbird"] $ws9
 assign [class="Rambox"] $ws10
 
 # reload the configuration file
@@ -239,8 +238,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 hide_edge_borders both
 
 
+set $lock-image $HOME/Pictures/wallpapers/screaming_sun1.png
 
-bindsym $mod+shift+x exec i3lock -i $HOME/Pictures/wallpapers/screaming_sun1.png -e
+bindsym $mod+shift+x exec i3lock -i $lock-image -e
 bindsym $mod+g exec python3 $HOME/Projects/Grade_Manager/src/gui.py
 
 # screenshots
@@ -274,9 +274,13 @@ exec --no-startup-id redshift
 exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.3
 
 exec rambox
-exec_always feh --bg-scale /home/jake/Pictures/wallpapers/dark_blue.jpg
+exec thunderbird
+exec_always feh --bg-scale /home/jake/Pictures/wallpapers/Dj7Eo0S.jpg
 # fade effect  on windows
 exec compton -f
+
+exec --no-startup-id /usr/lib/kdeconnectd
+# exec --no-startup-id kdeconnect-indicator
 
 # terminal color scheme
 exec xrdb ~/.Xresources
