@@ -4,11 +4,12 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
 	Plug 'bkad/CamelCaseMotion'
-
+    Plug 'jiangmiao/auto-pairs'
    
     Plug 'chriskempson/base16-vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'joshdick/onedark.vim'
     " Better Visual Guide
     Plug 'Yggdroot/indentLine'
     " syntax check
@@ -51,7 +52,7 @@ syntax on
 syntax enable
 " colorscheme
 let base16colorspace=256
-colorscheme base16-gruvbox-dark-hard
+colorscheme onedark
 set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
