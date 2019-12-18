@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+sleep 3
+st -n dropdown_st &
+st -n dropdown_py -e python &
+st -n dropdown_notepad -e ~/.config/i3/run-notepad &
