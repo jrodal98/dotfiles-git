@@ -10,10 +10,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'joshdick/onedark.vim'
+    Plug 'tpope/vim-commentary'  "comment-out by gc
     " Better Visual Guide
     Plug 'Yggdroot/indentLine'
     " syntax check
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
     " Autocomplete
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
@@ -90,7 +91,7 @@ augroup NCM2
   set completeopt=noinsert,menuone,noselect
   " When the <Enter> key is pressed while the popup menu is visible, it only
   " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+  " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
   " uncomment this block if you use vimtex for LaTex
   " autocmd Filetype tex call ncm2#register_source({
   "           \ 'name': 'vimtex',
@@ -101,6 +102,9 @@ augroup NCM2
   "           \ 'complete_pattern': g:vimtex#re#ncm2,
   "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
   "           \ })
+  " use <TAB> to select the popup menu (tab autocomplete):
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 augroup END
 " Ale
 let g:ale_lint_on_enter = 0
