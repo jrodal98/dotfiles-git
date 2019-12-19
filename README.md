@@ -8,7 +8,11 @@ This repo contains most of my configuration files for my Arch Linux + i3Gaps Thi
 2) polybar
 3) ranger
 4) zsh
-5) suckless terminal (fork of simple terminal)
+5) st terminal
+6) nvim
+7) dunst
+
+and probably other things.
 
 - A list of all of my pacman packages is in [packages.txt](packages.txt)
 - A (mostly) complete list of my fonts is provided in a text file as well.
