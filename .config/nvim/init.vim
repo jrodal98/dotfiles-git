@@ -25,6 +25,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Chiel92/vim-autoformat'
 call plug#end()
 
+" let g:python3_host_prog = '/home/jake/.venvs/nvim3/bin/python'
+
 filetype plugin indent on
 " colorscheme wal
 :set number

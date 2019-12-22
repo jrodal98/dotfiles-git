@@ -1,4 +1,0 @@
-#!/bin/sh
-# script instructions here https://github.com/phillipberndt/autorandr
-notify-send 'Display' 'Monitor change detected.' --icon=dialog-information
-xrandr --auto

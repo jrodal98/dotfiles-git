@@ -4,6 +4,8 @@ battery_print() {
     PATH_AC="/sys/class/power_supply/AC"
     PATH_BATTERY_0="/sys/class/power_supply/BAT0"
     PATH_BATTERY_1="/sys/class/power_supply/BAT1"
+    charging_file=/home/jake/.config/polybar/scripts/.charging
+    low_battery_file=/home/jake/.config/polybar/scripts/.low_battery
 
     ac=0
     battery_level_0=0
@@ -60,6 +62,14 @@ battery_print() {
         else
             echo "$icon $battery_percent %"
         fi
+
+        if [ ! -f "$charging_file" ]; then
+            touch $charging_file
+            notify-send -i "/home/jake/.local/share/icons/dunst_icons/icons8-charging-battery-48.png" "Charging" "Laptop charging"
+            if [ -f "$low_battery_file" ]; then
+                rm $low_battery_file
+            fi
+        fi
     else
 
         if [ "$battery_percent" -gt 97 ]; then
@@ -82,9 +92,18 @@ battery_print() {
             icon=""
         else
             icon=""
+            if [ ! -f "$low_battery_file" ]; then
+                touch $low_battery_file
+                notify-send -i "/home/jake/.local/share/icons/dunst_icons/icons8-low-battery-48.png" -u critical "Low Battery" "Better find an outlet"
+            fi
+
         fi
 
         echo "$icon $battery_percent %"
+        if [ -f "$charging_file" ]; then
+            rm $charging_file
+        fi
+
     fi
 }
 
@@ -103,6 +122,15 @@ case "$1" in
 
         trap exit INT
         trap "echo" USR1
+        charging_file=/home/jake/.config/polybar/scripts/.charging
+        low_battery_file=/home/jake/.config/polybar/scripts/.low_battery
+        if [ -f "$charging_file" ]; then
+            rm $charging_file
+        fi
+        if [ -f "$low_battery_file" ]; then
+            rm $low_battery_file
+        fi
+
 
         while true; do
             battery_print
