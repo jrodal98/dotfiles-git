@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
-	Plug 'bkad/CamelCaseMotion'
+	Plug 'chaoren/vim-wordmotion'
     Plug 'jiangmiao/auto-pairs'
    
     Plug 'chriskempson/base16-vim'
@@ -30,25 +30,6 @@ call plug#end()
 filetype plugin indent on
 " colorscheme wal
 :set number
-let g:camelcasemotion_key = '<leader>'
-
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-omap <silent> iw <Plug>CamelCaseMotion_iw
-xmap <silent> iw <Plug>CamelCaseMotion_iw
-omap <silent> ib <Plug>CamelCaseMotion_ib
-xmap <silent> ib <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
-imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
-imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
-
 " Configurations Part
 " UI configuration
 syntax on

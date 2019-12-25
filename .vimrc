@@ -1,6 +1,9 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'dylanaraps/wal.vim'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-repeat'
+	Plug 'chaoren/vim-wordmotion'
 call plug#end()
-
 colorscheme wal
 :set number
