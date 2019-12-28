@@ -1,11 +1,13 @@
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'dylanaraps/wal.vim'
+    Plug 'metalelf0/supertab'
+    Plug 'honza/vim-snippets'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
 	Plug 'chaoren/vim-wordmotion'
     Plug 'jiangmiao/auto-pairs'
-   
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
     Plug 'chriskempson/base16-vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -21,15 +23,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-jedi'
+    Plug 'ncm2/ncm2-pyclang'
+    " Plug 'ycm-core/YouCompleteMe'
+    Plug 'ncm2/ncm2-ultisnips'
+    Plug 'SirVer/ultisnips'
     " Formater
     Plug 'Chiel92/vim-autoformat'
 call plug#end()
-
 " let g:python3_host_prog = '/home/jake/.venvs/nvim3/bin/python'
-
 filetype plugin indent on
-" colorscheme wal
 :set number
+set clipboard+=unnamedplus
 " Configurations Part
 " UI configuration
 syntax on
@@ -66,6 +70,7 @@ set shiftwidth=4
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
 " NCM2
+let g:SuperTabDefaultCompletionType = '<C-n>'
 augroup NCM2
   autocmd!
   " enable ncm2 for all buffers
@@ -86,10 +91,26 @@ augroup NCM2
   "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
   "           \ })
   " use <TAB> to select the popup menu (tab autocomplete):
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <Tab> pumvisible() ? "<C-n>" : "<Tab>"  
+    inoremap <expr> <S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
+    inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>\<C-R>=AutoPairsReturn()<CR>", 'n')
 augroup END
-" Ale
+
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+
+" let g:UltiSnipsExpandTrigger		= "<Plug>(placeholder)"
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+" let g:UltiSnipsRemoveSelectModeMappings = 0
+" Markdown/LaTex 
+set conceallevel=0 
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+"" Ale
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_error_str = 'E'
