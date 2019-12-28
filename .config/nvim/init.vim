@@ -1,5 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
     Plug 'metalelf0/supertab'
+    Plug 'mhinz/vim-startify'
+    Plug 'scrooloose/nerdtree'
     Plug 'honza/vim-snippets'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
@@ -34,6 +36,35 @@ call plug#end()
 filetype plugin indent on
 :set number
 set clipboard+=unnamedplus
+" STARTIFY
+let g:startify_bookmarks = ["/home/jake/Projects/website","/home/jake/Projects/Grade_Manager", "/home/jake/Projects/conf-edit","/home/jake/.config/scripts"]
+let g:startify_lists = [
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+           \{ 'type': 'files',     'header': ['   MRU']            },
+           \{ 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+           \]
+"let g:startify_change_to_vcs_root = 1
+" LEADER COMMANDS
+" Spell-check set to <leader>o, 'o' for 'orthography':
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>w :w<CR>
+map <leader>q :q<CR>
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+" Nerd tree
+	map <leader>e :NERDTreeToggle<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Configurations Part
 " UI configuration
 syntax on
