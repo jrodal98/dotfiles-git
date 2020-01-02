@@ -3,12 +3,18 @@
 
 # Handles multiple different screenshot modes and sends notifications
 
+function play_sound() {
+    if ! $HOME/.config/scripts/do-not-disturb/dnd.sh state; then
+       paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga 
+    fi
+}
 case $1 in
 
     1)
         if maim -u $HOME/Pictures/screenshots/img_$(date +%s).png
         then
             notify-send -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "Saved in $HOME/Pictures/screenshots"
+            play_sound
         fi
         ;;
     2)
@@ -18,6 +24,7 @@ case $1 in
         then
             cat $tmp_file | xclip -selection clipboard -t image/png
             notify-send -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "Copied to clipboard"
+            play_sound
         fi
         rm $tmp_file
         ;;
@@ -25,6 +32,7 @@ case $1 in
         if maim -su $HOME/Pictures/screenshots/img_$(date +%s).png
         then
             notify-send -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "Saved in $HOME/Pictures/screenshots"
+            play_sound
         fi
         ;;
     *)
