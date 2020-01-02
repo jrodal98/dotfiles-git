@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
     Plug 'metalelf0/supertab'
+    " Plug 'ctrlpvim/ctrlp.vim'
     Plug 'mhinz/vim-startify'
     Plug 'scrooloose/nerdtree'
     Plug 'honza/vim-snippets'
