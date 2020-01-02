@@ -50,6 +50,7 @@ let g:startify_lists = [
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <leader>o :setlocal spell! spelllang=en_us<CR>
 map <leader>w :w<CR>
+map <leader><s-w> :wq<CR>
 map <leader>q :q<CR>
 " Go to tab by number
 noremap <leader>1 1gt

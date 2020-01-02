@@ -87,6 +87,7 @@ bindsym $mod+t [instance="dropdown_st"] scratchpad show; [instance="dropdown_st"
 #exec --no-startup-id $TERMINAL -n dropdown_notepad -e ~/.config/i3/run-notepad
 bindsym $mod+n [instance="dropdown_notepad"] scratchpad show; [instance="dropdown_notepad"] move position center
 
+bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/scripts/do-not-disturb/dnd.sh
 
 
 # start a terminal
