@@ -49,11 +49,15 @@ font pango:nerd-fonts-complete 12
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/jake/.config/i3/audio-control.sh up && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/jake/.config/i3/audio-control.sh down && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id /home/jake/.config/i3/audio-control.sh mute && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # variables
 
@@ -77,9 +81,10 @@ for_window [instance="dropdown_*"] border pixel 3
 #for_window [instance="dropdown_st"] border pixel 3
 #for_window [instance="dropdown_py"] border pixel 3
 
+for_window [instance="dropdown_spt"] resize set 1200 600
 exec --no-startup-id ~/.config/i3/launch-dropdowns
 #exec --no-startup-id $TERMINAL -n dropdown_py -e python
-bindsym $mod+p [instance="dropdown_py"] scratchpad show; [instance="dropdown_py"] move position center
+bindsym $mod+s [instance="dropdown_spt"] scratchpad show; [instance="dropdown_spt"] move position center
 
 #exec --no-startup-id $TERMINAL -n dropdown_st
 bindsym $mod+t [instance="dropdown_st"] scratchpad show; [instance="dropdown_st"] move position center
@@ -133,7 +138,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
