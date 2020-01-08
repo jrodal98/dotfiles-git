@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     Plug 'chriskempson/base16-vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -49,10 +50,18 @@ let g:startify_lists = [
 "let g:startify_change_to_vcs_root = 1
 " LEADER COMMANDS
 " Spell-check set to <leader>o, 'o' for 'orthography':
+let mapleader = "\<Space>"
+" save a file as the superuser
+nnoremap <silent><c-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><c-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+cmap w!! w !sudo tee >/dev/null %
 map <leader>o :setlocal spell! spelllang=en_us<CR>
 map <leader>w :w<CR>
 map <leader><s-w> :wq<CR>
 map <leader>q :q<CR>
+noremap <leader>a gg<s-v><s-g>
+nmap <leader>p <Plug>MarkdownPreview
+let g:mkdp_browser = 'qutebrowser'
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
