@@ -4,8 +4,8 @@ battery_print() {
     PATH_AC="/sys/class/power_supply/AC"
     PATH_BATTERY_0="/sys/class/power_supply/BAT0"
     PATH_BATTERY_1="/sys/class/power_supply/BAT1"
-    charging_file=/home/jake/.config/polybar/scripts/.charging
-    low_battery_file=/home/jake/.config/polybar/scripts/.low_battery
+    charging_file=/tmp/.charging
+    low_battery_file=/tmp/.low_battery
 
     ac=0
     battery_level_0=0
@@ -122,8 +122,8 @@ case "$1" in
 
         trap exit INT
         trap "echo" USR1
-        charging_file=/home/jake/.config/polybar/scripts/.charging
-        low_battery_file=/home/jake/.config/polybar/scripts/.low_battery
+        charging_file=/tmp/.charging
+        low_battery_file=/tmp/.low_battery
         if [ -f "$charging_file" ]; then
             rm $charging_file
         fi
