@@ -84,7 +84,6 @@ for_window [instance="dropdown_*"] border pixel 3
 for_window [instance="dropdown_spt"] resize set 1200 600
 exec --no-startup-id ~/.config/i3/launch-dropdowns
 #exec --no-startup-id $TERMINAL -n dropdown_py -e python
-bindsym $mod+s [instance="dropdown_spt"] scratchpad show; [instance="dropdown_spt"] move position center
 
 #exec --no-startup-id $TERMINAL -n dropdown_st
 bindsym $mod+t [instance="dropdown_st"] scratchpad show; [instance="dropdown_st"] move position center
@@ -110,11 +109,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Spotify controls
+bindsym $mod+Left exec --no-startup-id playerctl -p spotifyd previous
+bindsym $mod+Down exec --no-startup-id playerctl -p spotifyd play-pause
+bindsym $mod+Right exec --no-startup-id playerctl -p spotifyd next
+bindsym $mod+Up exec --no-startup-id $HOME/.config/i3/toggle-spt.sh
 
 # move focused window
 bindsym $mod+Shift+h move left
