@@ -264,4 +264,8 @@
     appname = Thunderbird
     script = /home/jake/.config/dunst/mark_window_urgent.sh
 
+[change_flameshot]
+    appname = flameshot
+    format = ""
+    script = /home/jake/.config/dunst/screenshot.sh
     # vim: ft=cfg

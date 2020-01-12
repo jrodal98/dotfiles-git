@@ -272,9 +272,8 @@ bindsym $mod+shift+x exec $HOME/.config/i3/toggle-lock
 bindsym $mod+g exec python3 $HOME/Projects/Grade_Manager/src/gui.py
 
 # screenshots
-bindsym Print exec $HOME/.config/i3/screenshot-helper.sh 1
-bindsym Control+Print exec $HOME/.config/i3/screenshot-helper.sh 2
-bindsym Control+shift+Print exec $HOME/.config/i3/screenshot-helper.sh 3
+bindsym Print exec flameshot full -p $HOME/Pictures/screenshots
+bindsym Control+Print exec flameshot gui -p $HOME/Pictures/screenshots
 
 
 # file managers
