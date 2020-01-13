@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: Implement rename; don't overwrite existing files in the saveas and rename #
 
 function play_sound() {
     if ! $HOME/.config/scripts/do-not-disturb/dnd.sh state; then
@@ -9,18 +8,15 @@ function play_sound() {
 }
 
 function rename() {
-    if zenity --entry \
-        --title="Add new profile" \
-        --text="Enter name of new profile:" \
-        --entry-text "NewProfile"
-        then
-            FILENAME="$?"
-            echo $FILENAME
-        else echo "No name entered"
-    fi
+    FILE=$(zenity --file-selection --file-filter=*.png --confirm-overwrite --title="Save screenshot as..." --save --filename="$1")
+    case $? in
+        0 )
+            mv $1 $FILE
+            ;;
+    esac
 }
 function saveas() {
-    FILE=$(zenity --file-selection --title="Save screenshot as..." --save --filename="/home/jake/Pictures/screenshots/")
+    FILE=$(zenity --file-selection --file-filter=*.png --confirm-overwrite --title="Save screenshot as..." --save --filename="/home/jake/Pictures/screenshots/")
     case $? in
         0 )
             xclip -o -selection clipboard -t image/png > $FILE
