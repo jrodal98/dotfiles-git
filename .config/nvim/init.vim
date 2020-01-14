@@ -1,5 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
     Plug 'metalelf0/supertab'
+    Plug 'jalvesaq/Nvim-R'
+    Plug 'gaalcaras/ncm-R'
+    Plug 'justinmk/vim-sneak'
     " Plug 'ctrlpvim/ctrlp.vim'
     Plug 'mhinz/vim-startify'
     Plug 'scrooloose/nerdtree'
@@ -137,6 +140,14 @@ augroup NCM2
     inoremap <expr> <S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
     inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>\<C-R>=AutoPairsReturn()<CR>", 'n')
 augroup END
+
+
+" R
+" remapping the basic :: send line
+nmap , <Plug>RDSendLine
+" remapping selection :: send multiple lines
+vmap , <Plug>RDSendSelection
+
 
 " Press enter key to trigger snippet expansion
 " The parameters are the same as `:help feedkeys()`

@@ -28,7 +28,7 @@ function delete() {
         --text="Are you sure you want to delete the screenshot?"
         then
             rm $1
-            dunstify -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$1 has been deleted"
+            dunstify -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot has been deleted"
     fi
 }
 

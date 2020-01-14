@@ -75,7 +75,7 @@ for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_*"] move position center
 for_window [instance="dropdown_*"] resize set 800 600
-for_window [instance="dropdown_*"] border pixel 3
+for_window [instance="dropdown_*"] border pixel 1
 #for_window [instance="dropdown_st"] resize set 800 600
 #for_window [instance="dropdown_py"] resize set 800 600
 #for_window [instance="dropdown_st"] border pixel 3
@@ -272,6 +272,8 @@ bindsym $mod+shift+x exec $HOME/.config/i3/toggle-lock
 bindsym $mod+g exec python3 $HOME/Projects/Grade_Manager/src/gui.py
 
 # screenshots
+
+exec --no-startup-id flameshot
 bindsym Print exec flameshot full -p $HOME/Pictures/screenshots
 bindsym Control+Print exec flameshot gui -p $HOME/Pictures/screenshots
 
