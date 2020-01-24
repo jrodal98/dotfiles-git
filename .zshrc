@@ -3,7 +3,7 @@ alias paste_from_clipboard='xclip -o -selection clipboard'
 alias grade_manager='python3 ~/Projects/Grade_Manager/src/gui.py'
 alias fuck='eval "sudo $(fc -ln -1)"'
 alias notify-after='/home/jake/.config/scripts/notify-after/notify-after'
-alias backup-system='sudo /home/jake/.config/scripts/backup-system/backup-system'
+alias backup-system='notify-after sudo /home/jake/.config/scripts/backup-system/backup-system'
 # alias open='rifle'
 # alias open='xdg-open'
 alias todo='todo.sh'
@@ -23,6 +23,8 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   colored-man-pages  
+  extract
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -46,4 +48,6 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='011'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
-
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
+POWERLEVEL9K_SHORTEN_DELIMITER=""
