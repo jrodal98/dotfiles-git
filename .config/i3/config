@@ -82,14 +82,11 @@ for_window [instance="dropdown_*"] border pixel 1
 #for_window [instance="dropdown_py"] border pixel 3
 
 for_window [instance="dropdown_spt"] resize set 1200 600
-exec --no-startup-id ~/.config/i3/launch-dropdowns
 #exec --no-startup-id $TERMINAL -n dropdown_py -e python
 
-#exec --no-startup-id $TERMINAL -n dropdown_st
-bindsym $mod+t [instance="dropdown_st"] scratchpad show; [instance="dropdown_st"] move position center
+bindsym $mod+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh st
 
-#exec --no-startup-id $TERMINAL -n dropdown_notepad -e ~/.config/i3/run-notepad
-bindsym $mod+n [instance="dropdown_notepad"] scratchpad show; [instance="dropdown_notepad"] move position center
+bindsym $mod+n exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh notepad
 
 bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/scripts/do-not-disturb/dnd.sh
 
@@ -113,7 +110,7 @@ bindsym $mod+l focus right
 bindsym $mod+Left exec --no-startup-id playerctl -p spotifyd previous
 bindsym $mod+Down exec --no-startup-id playerctl -p spotifyd play-pause
 bindsym $mod+Right exec --no-startup-id playerctl -p spotifyd next
-bindsym $mod+Up exec --no-startup-id $HOME/.config/i3/toggle-spt.sh
+bindsym $mod+Up exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh spt
 
 # move focused window
 bindsym $mod+Shift+h move left
