@@ -61,7 +61,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # variables
 
-set $TERMINAL st
+set $TERMINAL alacritty
 set $BROWSER brave
 set $EDITOR nvim
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -76,15 +76,11 @@ for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_*"] move position center
 for_window [instance="dropdown_*"] resize set 800 600
 for_window [instance="dropdown_*"] border pixel 1
-#for_window [instance="dropdown_st"] resize set 800 600
-#for_window [instance="dropdown_py"] resize set 800 600
-#for_window [instance="dropdown_st"] border pixel 3
-#for_window [instance="dropdown_py"] border pixel 3
 
 for_window [instance="dropdown_spt"] resize set 1200 600
 #exec --no-startup-id $TERMINAL -n dropdown_py -e python
 
-bindsym $mod+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh st
+bindsym $mod+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh terminal
 
 bindsym $mod+n exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh notepad
 

@@ -4,7 +4,7 @@ alias grade_manager='python3 ~/Projects/Grade_Manager/src/gui.py'
 alias fuck='eval "sudo $(fc -ln -1)"'
 alias notify-after='/home/jake/.config/scripts/notify-after/notify-after'
 alias backup-system='notify-after sudo /home/jake/.config/scripts/backup-system/backup-system'
-# alias open='rifle'
+alias open='rifle'
 # alias open='xdg-open'
 alias todo='todo.sh'
 alias notepad='nvim ~/Notes/notepad.md'
@@ -15,39 +15,15 @@ export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export PATH="$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR='nvim'
-ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="nerdfont-complete"
+export TERMINAL='alacritty'
+ZSH_THEME="bira"
 
 plugins=(
-  # git
   zsh-syntax-highlighting
   zsh-autosuggestions
   colored-man-pages  
   extract
-  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-	os_icon 
-	dir 
-	vcs 
-	#newline 
-	#prompt_char
-	)
-
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs command_execution_time)
-
-POWERLEVEL9K_OS_ICON_BACKGROUND='231'
-POWERLEVEL9K_OS_ICON_FOREGROUND='012'
-
-POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") "
-
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='011'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
-POWERLEVEL9K_SHORTEN_DELIMITER=""

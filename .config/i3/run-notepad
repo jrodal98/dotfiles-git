@@ -1,5 +1,6 @@
 #!/usr/bin/zsh
 source /home/jake/.zshrc
+cd ~/Notes
 notepad
 
 $SHELL
