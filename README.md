@@ -11,6 +11,7 @@ This repo contains most of my configuration files for my Arch Linux + i3Gaps Thi
 5) st terminal
 6) nvim
 7) dunst
+8) alacritty
 
 and probably other things.
 
