@@ -222,11 +222,11 @@ colors: # Modified Agronaught
   # Default colors
   primary:
     background: '0x022651'
-    foreground: '0xFFA873'
+    foreground: '0xFF74FF'
 
   # Cursor colors
   cursor:
-   text: '0xFF261E'
+   text: '0xFFFFFF'
    cursor: '0xFF261E'
 
   # Normal colors
@@ -234,7 +234,7 @@ colors: # Modified Agronaught
     black:   '0x0d0d0d'
     red:     '0xFF301B'
     green:   '0x32f007'
-    yellow:  '0xFFC620'
+    yellow:  '0xECF930'
     blue:    '0x1BA6FA'
     magenta: '0x8763B8'
     cyan:    '0x21DEEF'

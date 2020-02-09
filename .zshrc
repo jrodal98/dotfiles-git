@@ -6,7 +6,7 @@ alias notify-after='/home/jake/.config/scripts/notify-after/notify-after'
 alias backup-system='notify-after sudo /home/jake/.config/scripts/backup-system/backup-system'
 alias open='rifle'
 # alias open='xdg-open'
-alias todo='todo.sh'
+alias todo="taskell $HOME/todo.md"
 alias notepad='nvim ~/Notes/notepad.md'
 alias ce='~/Projects/conf-edit/conf-edit'
 

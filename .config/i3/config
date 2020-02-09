@@ -93,7 +93,7 @@ bindsym $mod+Return exec $TERMINAL
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -modi "run#ssh" -show run
 
 
 # change focus
@@ -295,7 +295,7 @@ exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.3
 
 exec rambox
 exec thunderbird
-exec_always feh --bg-scale /home/jake/Pictures/wallpapers/Dj7Eo0S.jpg
+exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
 # fade effect  on windows
 exec compton -f
 
