@@ -78,9 +78,12 @@ for_window [instance="dropdown_*"] resize set 800 600
 for_window [instance="dropdown_*"] border pixel 1
 
 for_window [instance="dropdown_spt"] resize set 1200 600
+for_window [instance="dropdown_taskell"] resize set 1200 600
 #exec --no-startup-id $TERMINAL -n dropdown_py -e python
 
 bindsym $mod+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh terminal
+
+bindsym $mod+Shift+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh taskell
 
 bindsym $mod+n exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh notepad
 

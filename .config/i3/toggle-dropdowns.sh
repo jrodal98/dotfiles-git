@@ -19,6 +19,15 @@ case $1 in
             i3-msg "[instance="dropdown_term"] scratchpad show; [instance="dropdown_term"] move position center"
         fi
         ;;
+    taskell)
+        if  [ "_$(xdotool search --classname "dropdown_taskell" | head -1)"  = "_" ]; then
+            $TERMINAL --class dropdown_taskell -e taskell $HOME/todo.md &
+            sleep .1
+            i3-msg "[instance="dropdown_taskell"] move position center"
+        else
+            i3-msg "[instance="dropdown_taskell"] scratchpad show; [instance="dropdown_taskell"] move position center"
+        fi
+        ;;
     notepad)
         if  [ "_$(xdotool search --classname "dropdown_notepad" | head -1)"  = "_" ]; then
             $TERMINAL --class dropdown_notepad -e ~/.config/i3/run-notepad &
