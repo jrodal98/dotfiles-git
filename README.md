@@ -17,3 +17,5 @@ and probably other things.
 
 - A list of all of my pacman packages is in [packages.txt](packages.txt)
 - A (mostly) complete list of my fonts is provided in a text file as well.
+
+More recent pictures and a more complete software list can be seen on [my website](https://www.jrodal.dev/configuration.html).
