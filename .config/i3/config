@@ -67,6 +67,8 @@ set $EDITOR nvim
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
+for_window [title="Android Emulator.*"] floating enable
 # #---Dropdown Windows---# #
 # # General dropdown window traits. The order can matter.
 for_window [instance="dropdown_*"] floating enable
@@ -79,13 +81,16 @@ for_window [instance="dropdown_*"] border pixel 1
 
 for_window [instance="dropdown_spt"] resize set 1200 600
 for_window [instance="dropdown_taskell"] resize set 1200 600
-#exec --no-startup-id $TERMINAL -n dropdown_py -e python
 
 bindsym $mod+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh terminal
-
 bindsym $mod+Shift+t exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh taskell
-
 bindsym $mod+n exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh notepad
+
+# Spotify controls
+bindsym $mod+Up exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh spt
+bindsym $mod+Down exec --no-startup-id playerctl -p spotifyd play-pause
+bindsym $mod+Left exec --no-startup-id playerctl -p spotifyd previous
+bindsym $mod+Right exec --no-startup-id playerctl -p spotifyd next
 
 bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/scripts/do-not-disturb/dnd.sh
 
@@ -105,11 +110,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Spotify controls
-bindsym $mod+Left exec --no-startup-id playerctl -p spotifyd previous
-bindsym $mod+Down exec --no-startup-id playerctl -p spotifyd play-pause
-bindsym $mod+Right exec --no-startup-id playerctl -p spotifyd next
-bindsym $mod+Up exec --no-startup-id $HOME/.config/i3/toggle-dropdowns.sh spt
 
 # move focused window
 bindsym $mod+Shift+h move left
