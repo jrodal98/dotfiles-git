@@ -14,7 +14,7 @@
 for_window [class="^.*"] border pixel 0 
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
-
+focus_on_window_activation urgent
 # Activate smart borders (always)
 smart_borders on
 

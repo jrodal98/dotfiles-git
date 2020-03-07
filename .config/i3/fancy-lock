@@ -10,6 +10,7 @@ LOCK="$FOLDER/lock.png"
 TEXT="$FOLDER/text.png"
 PARAMS=""
 OUTPUT_IMAGE="/tmp/i3lock.png"
+AUDIO_FILE="$HOME/.config/i3lock/incorrect_password.mp3"
 DISPLAY_TEXT=true
 PIXELATE=false
 BLURTYPE="1x1"
@@ -98,7 +99,7 @@ fi
 eval convert $PARAMS
 
 #Lock the screen:
-i3lock -i $OUTPUT_IMAGE -t -e -n
+i3lock -a $AUDIO_FILE -i $OUTPUT_IMAGE -t -e -n
 
 #Remove the generated image:
 rm $OUTPUT_IMAGE

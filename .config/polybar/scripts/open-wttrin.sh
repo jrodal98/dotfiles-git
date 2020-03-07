@@ -1,5 +1,5 @@
-#! /usr/bin/zsh
+#!/usr/bin/zsh
 
-curl wttr.in
+curl wttr.in/Charlottesville
 
 $SHELL

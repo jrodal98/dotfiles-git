@@ -25,7 +25,7 @@ get_icon() {
 }
 
 KEY="f0bf4e26c9449c0373ee4827996cd298"
-CITY=""
+CITY="charlottesville"
 UNITS="imperial"
 SYMBOL="°"
 
