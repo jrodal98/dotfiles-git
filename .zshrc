@@ -20,11 +20,12 @@ export TERMINAL='alacritty'
 ZSH_THEME="bira"
 
 plugins=(
-  zsh-syntax-highlighting
   zsh-autosuggestions
   colored-man-pages  
   extract
+  autojump
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-source /etc/profile.d/autojump.zsh
+# source /etc/profile.d/autojump.zsh
