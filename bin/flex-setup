@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+source /home/jake/.zshrc
+
+i3-msg workspace number 5
+$TERMINAL -e /home/jake/bin/helpers/run-neofetch &
+sleep .6
+i3-msg split h
+$TERMINAL -e nvim /home/jake/Projects/conf-edit/conf-edit &
+sleep .6
+i3-msg focus left
+i3-msg split v
+$TERMINAL -e cmatrix -C cyan &
+sleep .6
+i3-msg split h
