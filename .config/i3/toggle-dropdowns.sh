@@ -5,7 +5,7 @@ case $1 in
         if  [ "_$(xdotool search --classname "dropdown_spt" | head -1)"  = "_" ]; then
             systemctl --user restart spotifyd.service
             $TERMINAL --class dropdown_spt -e spt &
-            sleep .1
+            sleep 1
             i3-msg "[instance="dropdown_spt"] move position center"
         else
             i3-msg "[instance="dropdown_spt"] scratchpad show; [instance="dropdown_spt"] move position center"
@@ -14,7 +14,7 @@ case $1 in
     terminal)
         if  [ "_$(xdotool search --classname "dropdown_term" | head -1)"  = "_" ]; then
             $TERMINAL --class dropdown_term &
-            sleep .1
+            sleep 1
             i3-msg "[instance="dropdown_term"] move position center"
         else
             i3-msg "[instance="dropdown_term"] scratchpad show; [instance="dropdown_term"] move position center"
@@ -23,7 +23,7 @@ case $1 in
     taskell)
         if  [ "_$(xdotool search --classname "dropdown_taskell" | head -1)"  = "_" ]; then
             $TERMINAL --class dropdown_taskell -e taskell $HOME/todo.md &
-            sleep .1
+            sleep 1
             i3-msg "[instance="dropdown_taskell"] move position center"
         else
             i3-msg "[instance="dropdown_taskell"] scratchpad show; [instance="dropdown_taskell"] move position center"
@@ -32,7 +32,7 @@ case $1 in
     notepad)
         if  [ "_$(xdotool search --classname "dropdown_notepad" | head -1)"  = "_" ]; then
             $TERMINAL --class dropdown_notepad -e ~/.config/i3/run-notepad &
-            sleep .1
+            sleep 1
             i3-msg "[instance="dropdown_notepad"] move position center"
         else
             i3-msg "[instance="dropdown_notepad"] scratchpad show; [instance="dropdown_notepad"] move position center"

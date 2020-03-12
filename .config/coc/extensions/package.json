@@ -5,6 +5,6 @@
     "coc-python": ">=1.2.9",
     "coc-r-lsp": ">=1.1.1",
     "coc-rls": ">=1.1.4",
-    "coc-snippets": ">=2.1.21"
+    "coc-snippets": ">=2.1.22"
   }
 }

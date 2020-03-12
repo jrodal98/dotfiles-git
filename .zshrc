@@ -14,8 +14,8 @@ alias lg='lazygit'
 setopt rm_star_silent
 export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
-export PATH="$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
-export EDITOR='nvim'
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
+export EDITOR='vim'
 export TERMINAL='alacritty'
 ZSH_THEME="bira"
 

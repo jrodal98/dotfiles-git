@@ -4,7 +4,6 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -18,7 +17,10 @@ for_window [class="Kmix"] floating enable; border none
 for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 1575 25, no_focus 
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 750px, move up 470px, no_focus 
+no_focus [class="plasmashell"]
+no_focus [window_role="pop-up"]
+no_focus [window_type="notification"]
 # for_window [class="plasmashell" window_type="critical_notification"] floating enable, border none, move position 1575 25, no_focus 
 
 exec --no-startup-id wmctrl -c Plasma
@@ -146,16 +148,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Browser"
-set $ws2 "2: Editor"
-set $ws3 "3: Terminals"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8: Browser"
-set $ws9 "9: Thunderbird"
-set $ws10 "10: Rambox"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 
 # set which monitor the workspace goes to
@@ -282,7 +284,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id sudo xbacklight -inc 5 # increa
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5 # decrease screen brightness
 
 # blue light filter
-exec --no-startup-id redshift
+# exec --no-startup-id redshift -l 38.0288319:-78.4896762
 
 # touchpad speed
 # exec xinput set-prop "SynPS/2 Synaptics TouchPad" 325 0.3
