@@ -1,0 +1,30 @@
+[
+    "/usr/bin/nvim",
+    {
+        "conf-edit": {
+            "path": "/home/jake/.config/conf-edit/config",
+            "editor": "/usr/bin/nvim",
+            "hook": "echo 'conf-edit config edited!'"
+        },
+        "zsh": {
+            "path": "/home/jake/.zshrc",
+            "editor": "/usr/bin/nvim",
+            "hook": null
+        },
+        "i3": {
+            "path": "/home/jake/.config/i3/config",
+            "editor": "/usr/bin/nvim",
+            "hook": "i3-msg restart"
+        },
+        "nvim": {
+            "path": "/home/jake/.config/nvim/init.vim",
+            "editor": "/usr/bin/nvim",
+            "hook": null
+        },
+        "kitty": {
+            "path": "/home/jake/.config/kitty/kitty.conf",
+            "editor": "/usr/bin/nvim",
+            "hook": null
+        }
+    }
+]
