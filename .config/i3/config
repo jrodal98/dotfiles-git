@@ -61,7 +61,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # variables
 
-set $TERMINAL alacritty
+set $TERMINAL kitty
 set $BROWSER brave
 set $EDITOR nvim
 # Use Mouse+$mod to drag floating windows to their wanted position

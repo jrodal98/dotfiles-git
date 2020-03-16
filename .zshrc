@@ -16,7 +16,7 @@ export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR='vim'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 ZSH_THEME="bira"
 
 plugins=(
