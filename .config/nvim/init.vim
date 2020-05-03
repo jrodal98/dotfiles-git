@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'metalelf0/supertab'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'jalvesaq/Nvim-R'
+    Plug 'rust-lang/rust.vim'
     Plug 'justinmk/vim-sneak'
     Plug 'svermeulen/vim-cutlass'
     Plug 'mhinz/vim-startify'
@@ -85,6 +86,9 @@ syntax enable
 " colorscheme
 let base16colorspace=256
 colorscheme onedark
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
@@ -265,7 +269,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8'],
             \ 'cpp':['ccls'],
-            \ 'c': ['ccls']}
+            \ 'c': ['ccls'],
+            \ 'rust': [ 'cargo', 'rls', 'rustc', 'clippy', 'rustfmt' ]}
 " Airline
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''

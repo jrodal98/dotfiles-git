@@ -1,0 +1,1 @@
+{"zsh":{"path":"/home/jake/.zshrc","editor":"nvim","hook":"echo 'source ~/.zshrc :)'"},"kitty":{"path":"/home/jake/.config/kitty/kitty.conf","editor":"nvim","hook":""},"conf-edit":{"path":"/home/jake/.config/conf-edit/config.json","editor":"nvim","hook":"echo 'conf-edit config edited!'"},"nvim":{"path":"/home/jake/.config/nvim/init.vim","editor":"nvim","hook":""}}

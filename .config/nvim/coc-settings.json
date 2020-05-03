@@ -1,6 +1,9 @@
 {
     "suggest.noselect": true,
     "diagnostic.displayByAle": true,
+    "latex.build.executable": "latexmk",
+    "latex.build.args": ["-pdf"],
+    "latex.build.onSave": true,
     "languageserver": {
         "ccls": {
             "command": "ccls",

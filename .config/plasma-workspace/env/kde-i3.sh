@@ -1,1 +1,0 @@
-/home/jake/.config/i3/kde-i3.sh
