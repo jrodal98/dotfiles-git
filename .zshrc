@@ -1,6 +1,5 @@
 alias copy_to_clipboard='xclip -selection clipboard'
 alias paste_from_clipboard='xclip -o -selection clipboard'
-alias grade_manager='python3 ~/Projects/Grade_Manager/src/gui.py'
 alias fuck='eval "sudo $(fc -ln -1)"'
 alias update-system='nma "sudo pacman -Syu";nma "yay -Syu"'
 alias open='rifle'

@@ -29,7 +29,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'dense-analysis/ale'
     Plug 'Chiel92/vim-autoformat'
 call plug#end()
-" let g:python3_host_prog = '/home/jake/.venvs/nvim3/bin/python'
+let g:python3_host_prog = '/home/jake/.config/nvim/nvim_venv/bin/python'
 filetype plugin indent on
 :set number
 set clipboard+=unnamedplus
@@ -267,7 +267,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {'python': ['flake8'],
+let g:ale_linters = {'python': ['pylint'],
             \ 'cpp':['ccls'],
             \ 'c': ['ccls'],
             \ 'rust': [ 'cargo', 'rls', 'rustc', 'clippy', 'rustfmt' ]}

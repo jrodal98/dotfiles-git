@@ -344,7 +344,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 hide_edge_borders both
 
-bindsym $mod+g exec python3 $HOME/Projects/Grade_Manager/src/gui.py
+bindsym $mod+g exec $HOME/bin/grade-manager
 
 # screenshots
 
@@ -370,7 +370,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5 # decrease screen brightness
 
 # blue light filter
-# exec --no-startup-id redshift -l 38.0288319:-78.4896762
+exec --no-startup-id redshift -l 38.0288319:-78.4896762
 
 # touchpad speed
 # exec xinput set-prop "SynPS/2 Synaptics TouchPad" 325 0.3
@@ -382,11 +382,11 @@ exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpap
 
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
+# exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 

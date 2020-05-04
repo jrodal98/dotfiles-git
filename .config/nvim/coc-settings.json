@@ -4,6 +4,7 @@
     "latex.build.executable": "latexmk",
     "latex.build.args": ["-pdf"],
     "latex.build.onSave": true,
+    "python.jediEnabled": false,
     "languageserver": {
         "ccls": {
             "command": "ccls",
