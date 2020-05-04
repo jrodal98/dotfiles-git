@@ -13,7 +13,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = keyboard
 
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -256,13 +256,13 @@
     timeout = 0
     icon = /home/jake/.local/share/icons/dunst_icons/icons8-high-importance-48.png
 
-[set_rambox_urgent]
-    appname = Rambox
-    script = /home/jake/.config/dunst/mark_window_urgent.sh
+# [set_rambox_urgent]
+#     appname = Rambox
+#     script = /home/jake/.config/dunst/mark_window_urgent.sh
 
-[set_thunderbird_urgent]
-    appname = Thunderbird
-    script = /home/jake/.config/dunst/mark_window_urgent.sh
+# [set_thunderbird_urgent]
+#     appname = Thunderbird
+#     script = /home/jake/.config/dunst/mark_window_urgent.sh
 
 [change_flameshot]
     appname = flameshot
