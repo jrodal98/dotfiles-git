@@ -10,12 +10,7 @@ if [ $? -eq 0 ]; then
     killall i3lock
 
 else
-    if $HOME/.config/scripts/do-not-disturb/dnd.sh state; then
-        $HOME/.config/i3/fancy-lock --blur=0x3
-    else
-        notify-send "DUNST_COMMAND_PAUSE";
-        $HOME/.config/i3/fancy-lock --blur=0x3
-        notify-send "DUNST_COMMAND_RESUME";
-    fi
-
+    notify-send "DUNST_COMMAND_PAUSE";
+    $HOME/.config/i3/fancy-lock --blur=0x3
+    notify-send "DUNST_COMMAND_RESUME";
 fi
