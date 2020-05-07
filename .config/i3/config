@@ -9,6 +9,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 exec --no-startup-id unclutter
+exec_always --no-startup-id autorandr --change
 #Needed for i3-gaps
 default_border pixel 1
 default_floating_border normal
@@ -74,11 +75,11 @@ font pango:nerd-fonts-complete 12
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
 
-exec --no-startup-id volumeicon
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# exec --no-startup-id volumeicon
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
 
 # variables
 
@@ -221,9 +222,9 @@ set $ws10 "10"
 # set which monitor the workspace goes to
 # first output == highest preference
 # DP-2-1 is my docking station, HDMI-2 is my actual HDMI output
-workspace $ws1 output eDP1
-workspace $ws2 output DP2-1 HDMI2 eDP1
-workspace $ws8 output DP2-1 HDMI2 eDP1
+workspace $ws1 output eDP1 DP2-1
+workspace $ws2 output DP2-3 HDMI2 eDP1
+workspace $ws8 output DP2-3 HDMI2 eDP1
 
 
 # gaps for specific workspaces
@@ -288,7 +289,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+shift+x mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id /home/jake/.config/i3/toggle-lock, mode "default"
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -361,32 +362,24 @@ bindsym $mod+shift+m exec pcmanfm
 # browser
 bindsym $mod+b exec --no-startup-id $BROWSER
 
-# ide
-bindsym $mod+c exec --no-startup-id $TERMINAL -e $EDITOR
-
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec --no-startup-id sudo xbacklight -inc 5 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5 # decrease screen brightness
 
 # blue light filter
-exec --no-startup-id redshift -l 38.0288319:-78.4896762
+exec --no-startup-id redshift -l 38.0288319:-78.4896762 -t 5000:3000
 
-# touchpad speed
-# exec xinput set-prop "SynPS/2 Synaptics TouchPad" 325 0.3
-# exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.3
 
 exec rambox
 exec mailspring
 exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
 
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-exec --no-startup-id blueman-applet
-exec --no-startup-id xautolock -time 10 -locker blurlock
-# exec_always --no-startup-id ff-theme-util
+# exec --no-startup-id nm-applet
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id clipit
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id xautolock -time 10 -locker /home/jake/.config/i3/toggle-lock
 exec_always --no-startup-id fix_xcursor
 
 
@@ -429,33 +422,15 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
+# bumblebee bar
+# run bumblebee-status -l themes to list themes, -l modules to list modules
+# check out the vault module
+
 bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+    font pango:Inconsolata 12
+    position top
+    tray_output none
+	status_command bumblebee-status -m pasink pasource weather battery_all nic time -p pasink.percent_change="5%" time.format="%I:%M %p" weather.location="4770817,4752031" weather.unit="imperial" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
 }
 
 

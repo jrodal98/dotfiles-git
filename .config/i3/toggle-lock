@@ -12,5 +12,8 @@ if [ $? -eq 0 ]; then
 else
     notify-send "DUNST_COMMAND_PAUSE";
     $HOME/.config/i3/fancy-lock --blur=0x3
+    sleep 1
     notify-send "DUNST_COMMAND_RESUME";
 fi
+
+exit 0
