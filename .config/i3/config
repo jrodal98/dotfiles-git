@@ -9,7 +9,6 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 exec --no-startup-id unclutter
-exec_always --no-startup-id autorandr --change
 #Needed for i3-gaps
 default_border pixel 1
 default_floating_border normal
@@ -30,6 +29,7 @@ set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $mod+p exec passmenu
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -72,15 +72,23 @@ set $mod Mod4
 
 font pango:nerd-fonts-complete 12
 
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
 # Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_i3status killall -SIGUSR1 i3status
 
 # exec --no-startup-id volumeicon
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input
 # variables
 
 set $TERMINAL kitty
@@ -223,8 +231,8 @@ set $ws10 "10"
 # first output == highest preference
 # DP-2-1 is my docking station, HDMI-2 is my actual HDMI output
 workspace $ws1 output eDP1 DP2-1
-workspace $ws2 output DP2-3 HDMI2 eDP1
-workspace $ws8 output DP2-3 HDMI2 eDP1
+workspace $ws2 output DP2-2 HDMI2 eDP1
+workspace $ws8 output DP2-2 HDMI2 eDP1
 
 
 # gaps for specific workspaces
@@ -430,7 +438,7 @@ bar {
     font pango:Inconsolata 12
     position top
     tray_output none
-	status_command bumblebee-status -m pasink pasource weather battery_all nic time -p pasink.percent_change="5%" time.format="%I:%M %p" weather.location="4770817,4752031" weather.unit="imperial" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
+	status_command bumblebee-status -m pasink brightness weather battery_all nic time -p pasink.percent_change="5%" brightness.step="5" time.format="%I:%M %p" weather.location="4770817,4752031" weather.unit="imperial" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
 }
 
 

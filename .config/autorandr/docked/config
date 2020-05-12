@@ -4,7 +4,7 @@ output DP1
 off
 output DP2
 off
-output DP2-2
+output DP2-3
 off
 output HDMI1
 off
@@ -19,8 +19,8 @@ mode 1920x1080
 pos 0x0
 primary
 rate 60.00
-output DP2-3
-crtc 2
+output DP2-2
+crtc 1
 gamma 1.0:0.833:0.769
 mode 1920x1080
 pos 1920x0
