@@ -28,6 +28,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/indentLine'
     Plug 'dense-analysis/ale'
     Plug 'Chiel92/vim-autoformat'
+    Plug 'StanAngeloff/php.vim'
 call plug#end()
 let g:python3_host_prog = '/home/jake/.config/nvim/nvim_venv/bin/python'
 filetype plugin indent on

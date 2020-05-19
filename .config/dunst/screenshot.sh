@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-
+# www.jrodal.dev
 
 function play_sound() {
-    if ! $HOME/.config/scripts/do-not-disturb/dnd.sh state; then
-        paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
-    fi
+    paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
 }
 
 function rename() {
@@ -32,11 +30,17 @@ function delete() {
     fi
 }
 
+function ocr() {
+    xclip -o -selection clipboard -t image/png | tesseract stdin stdout | xclip -sel clip
+    dunstify -i $HOME/.local/share/icons/dunst_icons/icons8-general-ocr-48.png "Text copied to clipboard"
+
+}
+
 
 FILENAME="${3##* }" # gets the last word in the notification body, which is either the file path or clipboard
 case $FILENAME in
     clipboard)
-        ACTION=$(play_sound & dunstify -A "saveasAction,save as" -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$3")
+        ACTION=$(play_sound & dunstify -A "saveasAction,save as" -A "ocrAction,ocr" -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$3")
         ;;
     *)
         ACTION=$(play_sound & dunstify -A "renameAction,rename" -A "deleteAction,delete" -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$3")
@@ -53,4 +57,8 @@ case "$ACTION" in
     "deleteAction")
         delete $FILENAME
         ;;
+    "ocrAction")
+        ocr $FILENAME
+        ;;
+
 esac
