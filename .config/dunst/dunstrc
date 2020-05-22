@@ -267,5 +267,5 @@
 [change_flameshot]
     appname = flameshot
     format = ""
-    script = /home/jake/.config/dunst/screenshot.sh
+    script = ~/.config/dunst/screenshot.sh
     # vim: ft=cfg

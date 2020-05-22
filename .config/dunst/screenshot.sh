@@ -1,64 +1,92 @@
 #!/usr/bin/env bash
 # www.jrodal.dev
 
-function play_sound() {
-    paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
-}
+source $HOME/.config/dunst/variables.sh
 
-function rename() {
-    FILE=$(zenity --file-selection --file-filter=*.png --confirm-overwrite --title="Save screenshot as..." --save --filename="$1")
-    case $? in
-        0 )
-            mv $1 $FILE
-            ;;
-    esac
-}
-function saveas() {
-    FILE=$(zenity --file-selection --file-filter=*.png --confirm-overwrite --title="Save screenshot as..." --save --filename="/home/jake/Pictures/screenshots/")
-    case $? in
-        0 )
-            xclip -o -selection clipboard -t image/png > $FILE
-            ;;
-    esac
-}
-function delete() {
-    if zenity --question \
-        --text="Are you sure you want to delete the screenshot?"
-        then
-            rm $1
-            dunstify -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot has been deleted"
-    fi
-}
-
-function ocr() {
-    xclip -o -selection clipboard -t image/png | tesseract stdin stdout | xclip -sel clip
-    dunstify -i $HOME/.local/share/icons/dunst_icons/icons8-general-ocr-48.png "Text copied to clipboard"
-
-}
-
-
-FILENAME="${3##* }" # gets the last word in the notification body, which is either the file path or clipboard
-case $FILENAME in
-    clipboard)
-        ACTION=$(play_sound & dunstify -A "saveasAction,save as" -A "ocrAction,ocr" -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$3")
-        ;;
-    *)
-        ACTION=$(play_sound & dunstify -A "renameAction,rename" -A "deleteAction,delete" -i $HOME/.local/share/icons/dunst_icons/icons8-camera-100.png "Screenshot" "$3")
-        ;;
-esac
-
-case "$ACTION" in
-    "renameAction")
-        rename $FILENAME
-        ;;
-    "saveasAction")
-        saveas $FILENAME
-        ;;
-    "deleteAction")
-        delete $FILENAME
-        ;;
-    "ocrAction")
-        ocr $FILENAME
-        ;;
-
+case "$1" in
+	"scrot")
+		case "$2" in
+			fullToFile )
+                # takes screenshot of full display and moves to SCREENSHOT_DIR
+				scrot -e "mv \$f $SCREENSHOT_DIR; $ACTIONS_PATH $SCREENSHOT_DIR/\$f"
+				;;
+			fullToClip )
+                # takes screenshot of full display and saves it to clipboard
+				scrot -e "xclip -selection clipboard -t image/png -i \$f; rm \$f; $ACTIONS_PATH clipboard"
+				;;
+			selectToFile )
+                # takes a screenshot using selection tools and moves in to SCREENSHOT_DIR
+				scrot -se "mv \$f $SCREENSHOT_DIR; $ACTIONS_PATH $SCREENSHOT_DIR/\$f"
+				;;
+			selectToClip )
+                # takes a screenshot using selection tools and saves it to clipboard
+				scrot -se "xclip -selection clipboard -t image/png -i \$f; rm \$f; $ACTIONS_PATH clipboard"
+				;;
+			windowToFile )
+                # takes a screenshot of active window and moves it to SCREENSHOT_DIR
+				scrot -ue "mv \$f $SCREENSHOT_DIR; $ACTIONS_PATH $SCREENSHOT_DIR/\$f"
+				;;
+			windowToClip )
+                # takes a screenshot of active window and saves it to clipboard
+				scrot -ue "xclip -selection clipboard -t image/png -i \$f; rm \$f; $ACTIONS_PATH clipboard"
+				;;
+			*)
+				send_error "$2 is not a supported action for $1"
+				;;
+		esac
+		;;
+	"maim")
+		case "$2" in
+            fullToFile )
+                FILENAME=$SCREENSHOT_DIR/$(date +%s).png
+                maim $FILENAME
+                $ACTIONS_PATH $FILENAME
+                ;;
+			fullToClip )
+				maim | xclip -selection clipboard -t image/png
+                $ACTIONS_PATH clipboard
+				;;
+            selectToFile )
+                FILENAME=$SCREENSHOT_DIR/$(date +%s).png
+                maim -s $FILENAME
+                $ACTIONS_PATH $FILENAME
+                ;;
+			selectToClip )
+				maim -s | xclip -selection clipboard -t image/png
+                $ACTIONS_PATH clipboard
+				;;
+            windowToFile )
+                FILENAME=$SCREENSHOT_DIR/$(date +%s).png
+                maim -i $(xdotool getactivewindow) $FILENAME
+                $ACTIONS_PATH $FILENAME
+                ;;
+			windowToClip )
+				maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+                $ACTIONS_PATH clipboard
+				;;
+			*)
+				send_error "$2 is not a supported action for $1"
+				;;
+		esac
+		;;
+	"flameshot")
+		case "$2" in
+			full )
+				flameshot full -p $SCREENSHOT_DIR
+				;;
+			select )
+				flameshot gui -p $SCREENSHOT_DIR
+				;;
+			"Flameshot Info" )
+				FILENAME="${3##* }" # gets the last word in the notification body, which is either the file path or clipboard
+				$ACTIONS_PATH $FILENAME
+				;;
+			*)
+				send_error "$2 is not a supported action for $1"
+				;;
+		esac
+		;;
+	* )
+		send_error "$1 is not a supported screenshot tool."
+		;;
 esac
