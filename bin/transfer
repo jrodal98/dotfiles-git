@@ -1,79 +1,188 @@
 #!/usr/bin/env bash
 # www.jrodal.dev
 
-PASSWORD="yourdefaultpassword" # default password for encryption and decryption
+PASSWORD="$(pass transfer 2>/dev/null)" || { PASSWORD="6NR2spUqe%vMqA#9G#ySq"; echo "pass command failed - setting $PASSWORD as default password."; }
+SITE="transfer.sh"
 
-command -v gpg >/dev/null 2>&1 || { echo "Install gnupg using your favorite package manager." >&2; exit 1; }
-command -v curl >/dev/null 2>&1 || { echo "Install curl using your favorite package manager." >&2; exit 1; }
-command -v tee >/dev/null 2>&1 || { echo "Install tee using your favorite package manager." >&2; exit 1; }
+function main () {
+    check_dependencies
+    parse_args $@ # $INPUT, $SITE, and $PASSWORD are defined in this function
+    transfer_data 
+}
+
+function check_dependencies() {
+    command -v gpg >/dev/null 2>&1 || { echo "Install gnupg using your favorite package manager." >&2; exit 1; }
+    command -v curl >/dev/null 2>&1 || { echo "Install curl using your favorite package manager." >&2; exit 1; }
+    command -v tee >/dev/null 2>&1 || { echo "Install tee using your favorite package manager." >&2; exit 1; }
+    command -v tar >/dev/null 2>&1 || { echo "Install tar using your favorite package manager." >&2; exit 1; }
+}
 
 
 function usage ()
 {
-    echo "Usage :  $0 [options] [path to file or url]
+    echo "Usage :  $0 [options] [path to file, directory, or url]
 
     Options:
     -d|decrypt              Decrypt while downloading or decrypt file
     -e|encrypt              Encrypt while uploading
     -h|help                 Display this message
-    -p|password <PASSWORD>  Supply a password for encryption or decryption"
+    -p|password <PASSWORD>  Supply a password for encryption or decryption
+    -s|site <SITE>          Site to upload to. OPTIONS: [transfer.sh (default) | 0x0.st]"
 
 }
 
 #-----------------------------------------------------------------------
 #  Handle command line arguments
 #-----------------------------------------------------------------------
-
-
 # TODO: add a -s option for site (allow uploads/downloads from multiple sites)
 # TODO: add a -c flag to copy to xclip
 # TODO: add a max days option. Just have a default MAX=14 variable and pass it when uploading
-while getopts "dehp:" opt
-do
-    case $opt in
+function parse_args() {
+    local opt OPTIND
+    while getopts "dehp:s:" opt; do
+        case $opt in
 
-        d) d=true;;
+            d) d=true;;
 
-        e) e=true;;
+            e) e=true;;
 
-        h) usage; exit 0;;
+            h) usage; exit 0;;
 
-        p) PASSWORD=$OPTARG;;
+            p) PASSWORD=$OPTARG; echo "Using provided password instead of default" >&2;;
 
-        * ) echo -e "\n  Option does not exist : OPTARG\n"
-            usage; exit 1;;
+            s) SITE=$OPTARG; echo "Uploading to $SITE instead of the default." >&2;;
 
-        esac    # --- end of case ---
-    done
-    shift $((OPTIND-1))
+            * ) echo -e "\n  Option does not exist : OPTARG\n"
+                usage; exit 1;;
 
-    if [[ $# -ne 1 ]]; then
-        usage
+            esac    # --- end of case ---
+        done
+        shift $((OPTIND-1))
+
+        if [[ $# -ne 1 ]]; then
+            usage
+            exit 1
+        fi
+
+        INPUT=$1
+
+    }
+
+function download_mode() {
+    local OUTFILE
+    echo "Url detected - attempting to download $INPUT" >&2
+    OUTFILE="transfer$(date +%s)_$(basename $INPUT)"
+    if [ $d ]; then
+        echo "Decrypting while downloading..." >&2
+        curl $INPUT --progress-bar | gpg --batch --passphrase $PASSWORD -d > $OUTFILE && echo $OUTFILE
+    else
+        curl $INPUT -o $OUTFILE --progress-bar && echo $OUTFILE
+    fi
+}
+
+function encrypt_and_upload_dir() {
+    echo "archiving, compressing, encrypting, and uploading $INPUT.tar.gz" >&2
+    case $SITE in
+        transfer.sh)
+            tar -zcvO $INPUT | gpg --batch --passphrase $PASSWORD --symmetric -o- | curl -X PUT --upload-file "-" "https://transfer.sh/$(basename $INPUT).tar.gz" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        0x0.st)
+            tar -zcvO $INPUT | gpg --batch --passphrase $PASSWORD --symmetric -o- | curl -F "file=@-;type=application/gzip" https://0x0.st --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        *)
+            echo "$SITE not supported." >&2
+            exit 1
+    esac
+}
+
+function upload_dir() {
+    echo "archiving, compressing, and uploading $INPUT.tar.gz with NO ENCRYPTION..." >&2
+    case $SITE in
+        transfer.sh)
+            tar -zcvO $INPUT | curl -X PUT --upload-file "-" "https://transfer.sh/$(basename $INPUT).tar.gz" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        0x0.st)
+            tar -zcvO $INPUT | curl -F "file=@-;type=application/gzip" https://0x0.st --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        *)
+            echo "$SITE not supported." >&2
+            exit 1
+    esac
+}
+
+
+function decrypt_file() {
+    local OUTFILE
+    echo "Attempting to decrypt $INPUT..." >&2
+    OUTFILE="$(dirname $INPUT)/decrypted$(date +%s)_$(basename $INPUT)"
+    gpg --batch --passphrase $PASSWORD -o $OUTFILE -d $INPUT && echo "Decrypted $INPUT into $OUTFILE"
+}
+
+function encrypt_and_upload_file() {
+    echo "encrypting and uploading $INPUT..." >&2
+    case $SITE in
+        transfer.sh)
+            gpg --batch --passphrase $PASSWORD --symmetric -o- $INPUT | curl -X PUT --upload-file "-" "https://transfer.sh/$(basename $INPUT)" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        0x0.st)
+            gpg --batch --passphrase $PASSWORD --symmetric -o- $INPUT | curl -F "file=@-;type=$(file -b --mime-type $INPUT)" https://0x0.st --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        *)
+            echo "$SITE not supported." >&2
+            exit 1
+    esac
+}
+
+function upload_file() {
+    echo "uploading $INPUT with NO ENCRYPTION..." >&2
+    case $SITE in
+        transfer.sh)
+            curl --upload-file $INPUT "https://transfer.sh/$(basename $INPUT)" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        0x0.st)
+            curl -F "file=@$INPUT" https://0x0.st --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_history
+            ;;
+        *)
+            echo "$SITE not supported." >&2
+            exit 1
+    esac
+}
+
+
+function transfer_data() {
+    regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+    if [[ $INPUT =~ $regex ]]; then
+        download_mode $@
+    elif [[ -d $INPUT ]]; then
+        dir_mode $@
+    elif [[ -f $INPUT ]]; then
+        file_mode $@
+    else
+        echo "ERROR: $INPUT is either an invalid path or malformed url." >&2
         exit 1
     fi
+}
 
-    regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
-    if [[ $1 =~ $regex ]]; then
-        # URL, so download stuff
-        echo "Url detected - attempting to download $1" >&2
-        OUTFILE="transfer$(date +%s)_$(basename $1)"
-        if [ $d ]; then
-            echo "Decrypting while downloading..." >&2
-            curl $1 --progress-bar | gpg --batch --passphrase $PASSWORD -d > $OUTFILE && echo $OUTFILE
-        else
-            curl $1 -o $OUTFILE --progress-bar && echo $OUTFILE
-        fi
+function file_mode() {
+    if [ $d ]; then
+        decrypt_file $@
+    elif [ $e ]; then
+        encrypt_and_upload_file $@
     else
-        echo "File or invalid URL detected. Assuming $1 is a file..." >&2
-        if [ $d ]; then
-            echo "Attempting to decrypt $1..." >&2
-            OUTFILE="$(dirname $1)/decrypted$(date +%s)_$(basename $1)"
-            gpg --batch --passphrase $PASSWORD -o $OUTFILE -d $1 && echo "Decrypted $1 into $OUTFILE"
-        elif [ $e ]; then
-            echo "encrypting and uploading $1..." >&2
-            gpg --batch --passphrase $PASSWORD --symmetric -o- $1 | curl -X PUT --upload-file "-" "https://transfer.sh/$(basename $1)" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_gpg_history
-        else
-            echo "uploading $1 with no encryption..." >&2
-            curl --upload-file $1 "https://transfer.sh/$(basename $1)" --progress-bar -w " $(date +%c)\n"| tee -a $HOME/.transfer_gpg_history
-        fi
+        upload_file $@
     fi
+}
+
+function dir_mode() {
+    echo "$INPUT has been detected as a directory..." >&2
+    if [ $d ]; then
+        echo "ERROR: as far as I know, directories cannot be encrypted and decrypted..." >&2
+        exit 1
+    elif [ $e ]; then
+        encrypt_and_upload_dir $@
+    else
+        upload_dir $@
+    fi
+}
+
+main $@

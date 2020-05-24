@@ -285,7 +285,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # copy second string from WM_CLASS(STRING)
 
 assign [class="Mailspring"] $ws9
-assign [class="Rambox"] $ws10
+assign [class="WhatsApp"] $ws10
+# assign [class="Signal"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -358,9 +359,8 @@ bindsym $mod+g exec $HOME/bin/grade-manager
 # screenshots
 
 exec --no-startup-id flameshot
-bindsym Print exec flameshot full -p $HOME/Pictures/screenshots
-bindsym Control+Print exec flameshot gui -p $HOME/Pictures/screenshots
-
+bindsym Print exec /home/jake/.config/dunst/screenshot.sh flameshot full
+bindsym Control+Print exec /home/jake/.config/dunst/screenshot.sh flameshot select
 
 # file managers
 bindsym $mod+m exec $TERMINAL -e ranger
@@ -379,8 +379,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id redshift -l 38.0288319:-78.4896762 -t 5000:3000
 
 
-exec rambox
+exec whatsapp-nativefier-dark
 exec mailspring
+# exec signal-desktop --start-in-tray --use-tray-icon
 exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
 
 # exec --no-startup-id nm-applet
@@ -437,7 +438,7 @@ set_from_resource $term_color15    color15
 bar {
     font pango:Inconsolata 12
     position top
-    tray_output none
+    # tray_output none
 	status_command bumblebee-status -m pasink brightness weather battery_all nic time -p pasink.percent_change="5%" brightness.step="5" time.format="%I:%M %p" weather.location="4770817,4752031" weather.unit="imperial" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
 }
 
