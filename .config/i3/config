@@ -153,7 +153,7 @@ bindsym $mod+Return exec --no-startup-id $TERMINAL
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id rofi -modi "drun#ssh" -show drun -show-icons
+bindsym $mod+space exec --no-startup-id rofi -modi "drun#ssh" -show drun -show-icons
 
 
 # change focus
@@ -193,7 +193,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -285,7 +285,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # copy second string from WM_CLASS(STRING)
 
 assign [class="Mailspring"] $ws9
-assign [class="WhatsApp"] $ws10
+assign [class="whatsapp-nativefier-*"] $ws10
 # assign [class="Signal"] $ws10
 
 # reload the configuration file

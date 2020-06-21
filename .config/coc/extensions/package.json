@@ -6,8 +6,8 @@
     "coc-phpls": ">=2.1.8",
     "coc-python": ">=1.2.12",
     "coc-r-lsp": ">=1.1.1",
-    "coc-rust-analyzer": ">=0.6.6",
-    "coc-snippets": ">=2.1.26",
+    "coc-rust-analyzer": ">=0.7.4",
+    "coc-snippets": ">=2.1.28",
     "coc-texlab": ">=2.1.0"
   }
 }

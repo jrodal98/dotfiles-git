@@ -81,6 +81,7 @@ git
 glibc
 gnome-keyring
 gnu-netcat
+gotop-bin
 gparted
 grep
 grub

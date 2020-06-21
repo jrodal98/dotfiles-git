@@ -1,7 +1,7 @@
 alias copy_to_clipboard='xclip -selection clipboard'
 alias paste_from_clipboard='xclip -o -selection clipboard'
 alias fuck='eval "sudo $(fc -ln -1)"'
-alias update-system='nma "sudo pacman -Syu";nma "yay -Syu"'
+alias update-system='nma "sudo pacman -Syu";nma "yay -Syu"; pacman -Qqe > ~/packages.txt'
 alias open='rifle'
 # alias open='xdg-open'
 alias todo="taskell $HOME/todo.md"
@@ -23,6 +23,15 @@ plugins=(
   autojump
   zsh-syntax-highlighting
 )
+# use the vi navigation keys in menu completion
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 
 source $ZSH/oh-my-zsh.sh
-# source /etc/profile.d/autojump.zsh
+# bind ctrl + space to accept autocomplete suggestion
+bindkey '^j' autosuggest-accept
