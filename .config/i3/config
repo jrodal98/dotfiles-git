@@ -439,7 +439,7 @@ bar {
     font pango:Inconsolata 12
     position top
     # tray_output none
-	status_command bumblebee-status -m pasink brightness weather battery_all nic time -p pasink.percent_change="5%" brightness.step="5" time.format="%I:%M %p" weather.location="4770817,4752031" weather.unit="imperial" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
+	status_command bumblebee-status -m progress pasink brightness weather battery-upower nic time -p progress.placeholder="progress" progress.format="{cmd} {percentage}" pasink.percent_change="5%" brightness.step="5" time.format="%I:%M %p" weather.location="4752031,4770817" weather.unit="imperial" battery-upower.showremaining="false" nic.exclude="lo,virbr,docker,vboxnet,veth,br,enp0s31f6,tun0" nic.format="{ssid}" nic.left-click="networkmanager_dmenu" -t gruvbox-powerline
 }
 
 

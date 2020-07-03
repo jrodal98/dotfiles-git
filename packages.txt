@@ -14,6 +14,7 @@ autorandr
 avahi
 awesome-terminal-fonts
 b43-fwcutter
+balena-etcher
 bash
 bash-language-server
 bauh
@@ -131,6 +132,7 @@ lightdm-settings
 lightdm-slick-greeter
 linux56
 logrotate
+lsof
 lvm2
 lxappearance
 lxinput

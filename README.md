@@ -16,6 +16,10 @@ This repo contains most of my configuration files for my Arch Linux + i3Gaps Thi
 and probably other things.
 
 - A list of all of my pacman packages is in [packages.txt](packages.txt)
-- A (mostly) complete list of my fonts is provided in a text file as well.
 
 More recent pictures and a more complete software list can be seen on [my website](https://www.jrodal.dev/configuration.html).
+
+## dotfile management
+
+* I'm using [dotbare](https://github.com/kazhala/dotbare), whose configuration lives inside my .zshrc
+* I use githooks, which are listed in .githooks. Run `dotbare config core.hooksPath ~/.githooks` upon cloning the repository.

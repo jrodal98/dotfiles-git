@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'metalelf0/supertab'
     Plug 'justinmk/vim-sneak'
     Plug 'svermeulen/vim-cutlass'
-	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
 	Plug 'chaoren/vim-wordmotion'

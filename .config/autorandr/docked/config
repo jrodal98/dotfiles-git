@@ -14,14 +14,14 @@ output VIRTUAL1
 off
 output DP2-1
 crtc 0
-gamma 1.0:0.833:0.769
+gamma 1.0:0.667:0.455
 mode 1920x1080
 pos 0x0
 primary
 rate 60.00
 output DP2-2
-crtc 1
-gamma 1.0:0.833:0.769
+crtc 2
+gamma 1.0:0.667:0.455
 mode 1920x1080
 pos 1920x0
 rate 60.00
