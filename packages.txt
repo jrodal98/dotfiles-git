@@ -80,6 +80,7 @@ gifsicle
 gimp
 git
 glibc
+gnome-disk-utility
 gnome-keyring
 gnu-netcat
 gotop-bin
@@ -104,6 +105,7 @@ gzip
 hardcode-fixer
 hexchat
 htop
+hugo
 hunspell-en_US
 inetutils
 intel-ucode
@@ -131,6 +133,8 @@ licenses
 lightdm-settings
 lightdm-slick-greeter
 linux56
+linux57
+linux57-virtualbox-host-modules
 logrotate
 lsof
 lvm2
@@ -186,6 +190,7 @@ networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
 nfs-utils
+nmap
 nodejs
 noto-fonts-emoji
 npm
@@ -222,6 +227,7 @@ pulseaudio-bluetooth
 pulseaudio-ctl
 qt5-styleplugins
 qt5ct
+qtile
 qutebrowser
 r
 ranger
@@ -285,7 +291,6 @@ vulkan-radeon
 w3m
 wallpapers-juhraya
 wget
-whatsapp-nativefier-dark
 which
 wmctrl
 wmutils
