@@ -5,8 +5,9 @@ alias update-system='nma "sudo pacman -Syu";nma "yay -Syu"; pacman -Qqe > ~/pack
 alias todo="taskell $HOME/todo.md"
 alias notepad='nvim ~/Notes/notepad.md'
 alias lg='lazygit'
-alias m='sudo mount -o rw,users'
-alias um='sudo umount'
+
+alias szsh='source ~/.zshrc'
+alias yd='youtube-dl'
 
 export DOTBARE_DIR="$HOME/.dotfiles"
 export DOTBARE_TREE="$HOME"
@@ -21,13 +22,13 @@ export TERMINAL='kitty'
 ZSH_THEME="bira"
 
 plugins=(
-  zsh-autosuggestions
-  zsh-vim-mode
-  colored-man-pages  
-  extract
-  autojump
-  dotbare
-  zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-vim-mode
+    colored-man-pages
+    extract
+    autojump
+    dotbare
+    zsh-syntax-highlighting
 )
 # use the vi navigation keys in menu completion
 zstyle ':completion:*' menu select

@@ -5,6 +5,7 @@
     "latex.build.args": ["-pdf"],
     "latex.build.onSave": true,
     "python.jediEnabled": false,
+    "rust-analyzer.serverPath": "/home/jake/.cargo/bin/rust-analyzer",
     "languageserver": {
         "ccls": {
             "command": "ccls",

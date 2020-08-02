@@ -10,10 +10,11 @@ nmap <Left> <<
 nmap <Right> >>
 vmap <Left> <gv
 vmap <right> >gv
+vmap < <gv
+vmap > >gv
 cmap w!! w !sudo tee >/dev/null %
 map <leader>oo :setlocal spell! spelllang=en_us<CR>
 map <leader>w :w<CR>
-noremap <leader><c-a> gg<s-v><s-g>
 nnoremap <leader><leader> :noh<CR>
 " Go to tab by number
 noremap <leader>1 1gt
@@ -26,6 +27,18 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+" * doesn't jump to next match
+nnoremap * m`:keepjumps normal! *``<cr>
+" substitute word and then enable repeat operator to
+" replace next occurence of the word
+nmap <Leader>sw *cgn
+" don't replace yanked text when pasting in visual mode
+vnoremap p "_dP
+" some attempts at removing \n when pasting
+nmap <Leader>P i<C-r>+<BS><ESC>
+nmap <Leader>p a<C-r>+<BS><ESC>
+vmap <Leader>p di<C-r>+<BS><ESC>
 
 " Window management and terminals
 set splitbelow splitright

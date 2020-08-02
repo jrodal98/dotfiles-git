@@ -22,6 +22,7 @@ colorscheme onedark
 "
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
+let g:formatters_php = ['prettier']
 
 " Airline
 let g:airline_left_sep  = ''

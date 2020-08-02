@@ -285,8 +285,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # copy second string from WM_CLASS(STRING)
 
 assign [class="Mailspring"] $ws9
-assign [class="whatsapp-nativefier-*"] $ws10
-# assign [class="Signal"] $ws10
+assign [class="Signal"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -379,9 +378,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id redshift -l 38.0288319:-78.4896762 -t 5000:3000
 
 
-exec whatsapp-nativefier-dark
 exec mailspring
-# exec signal-desktop --start-in-tray --use-tray-icon
+exec signal-desktop --start-in-tray --use-tray-icon
 exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
 
 # exec --no-startup-id nm-applet

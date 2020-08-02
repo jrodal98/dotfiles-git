@@ -31,12 +31,14 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'dense-analysis/ale'
         Plug 'Chiel92/vim-autoformat'
         Plug 'honza/vim-snippets'
-        Plug 'frazrepo/vim-rainbow'
+        Plug '2072/PHP-Indenting-for-VIm'
+        Plug 'luochen1990/rainbow'
     endif
 call plug#end()
 
-exec 'source' '~/.config/nvim/general.vim'
+
 exec 'source' '~/.config/nvim/minimal.vim'
+exec 'source' '~/.config/nvim/general.vim'
 
 if !exists('g:vscode')    
     exec 'source' '~/.config/nvim/complete.vim'
