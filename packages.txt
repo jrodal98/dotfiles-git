@@ -57,6 +57,7 @@ downgrade
 e2fsprogs
 ecryptfs-utils
 efibootmgr
+electrum
 epdfview
 exfat-utils
 f2fs-tools

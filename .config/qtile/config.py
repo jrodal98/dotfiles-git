@@ -109,6 +109,7 @@ keys = [
     Key([mod, "control"], "b", lazy.spawn(f"{TERMINAL} -e 'bmenu'")),
     Key([mod], "m", lazy.spawn(MAIL)),
     Key([mod], "s", lazy.spawn("signal-desktop")),
+    Key([mod, "shift"], "x", lazy.spawn("/home/jake/.config/qtile/scripts/qtile_exit.sh")),
 ]
 
 gdkdsp = Gdk.Display.get_default()
@@ -214,6 +215,7 @@ def poll_audio():
 
     return output
 
+
 def poll_battery():
     # CONFIGURATION
     power_supply_path = "/sys/class/power_supply"
@@ -262,29 +264,37 @@ def poll_battery():
 
     return f"{output_icon} {battery_percent}%"
 
-
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(visible_groups=groups_by_screen[i]),
-                widget.Sep(linewidth = 1, padding = 10),
+                widget.Sep(linewidth=1, padding=10),
                 widget.CurrentLayout(),
-                widget.Sep(linewidth = 1, padding = 10),
+                widget.Sep(linewidth=1, padding=10),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),
-                widget.Sep(linewidth = 1, padding = 10),
-                widget.GenPollText(func=poll_audio, update_interval=1),
-                widget.Sep(linewidth = 1, padding = 10),
+                widget.Sep(linewidth=1, padding=10),
+                widget.GenPollText(
+                    func=poll_audio,
+                    update_interval=1,
+                    mouse_callbacks={
+                        "Button1": lambda qtile: qtile.cmd_spawn("pavucontrol")
+                    },
+                ),
+                widget.Sep(linewidth=1, padding=10),
                 widget.GenPollText(func=poll_battery, update_interval=60),
-                widget.Sep(linewidth = 1, padding = 10),
+                widget.Sep(linewidth=1, padding=10),
                 widget.Wlan(
                     format="直  {essid}",
                     disconnected_message="睊  Disconnected",
                     interface="wlp58s0",
+                    mouse_callbacks={
+                        "Button1": lambda qtile: qtile.cmd_spawn("networkmanager_dmenu")
+                    },
                 ),
-                widget.Sep(linewidth = 1, padding = 10),
+                widget.Sep(linewidth=1, padding=10),
                 widget.Clock(format="  %I:%M %p"),
             ],
             24,
