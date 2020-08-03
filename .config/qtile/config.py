@@ -125,7 +125,13 @@ else:
 all_groups = "".join(groups_by_screen)
 groups = (
     [Group(i) for i in all_groups[:-1]]
-    + [Group(all_groups[-1], matches=[Match(wm_class=["Mailspring", "Signal"])], layout="treetab")]
+    + [
+        Group(
+            all_groups[-1],
+            matches=[Match(wm_class=["Mailspring", "Signal"])],
+            layout="treetab",
+        )
+    ]
     + [ScratchPad("scratchpad", [DropDown("term", TERMINAL),],)]
 )
 
@@ -139,7 +145,7 @@ for j, names in enumerate(groups_by_screen):
         ]
     )
 
-keys.extend([Key([mod, "shift"], i, lazy.window.togroup(i)) for i in all_groups])
+    keys.extend([Key([mod, "shift"], i, lazy.window.togroup(i)) for i in all_groups])
 
 layout_theme = {
     "border_width": 2,
@@ -177,30 +183,119 @@ colors = [
     ["#e1acff", "#e1acff"],  # window name
 ]
 
-widget_defaults = dict(font="Inconsolata", fontsize=12, padding=2)
+widget_defaults = dict(font="TerminessTTF Nerd Font", fontsize=16, padding=5)
 extension_defaults = widget_defaults.copy()
+
+
+def poll_audio():
+    try:
+        volume_level_str, sink_status, _ = (
+            subprocess.run(["pulseaudio-ctl", "full-status"], stdout=subprocess.PIPE)
+            .stdout.decode("utf-8")
+            .strip()
+            .split()
+        )
+
+        volume_level = int(float(volume_level_str))
+        is_sink_muted = sink_status == "yes"
+    except:
+        return "ERR"
+
+    if is_sink_muted:
+        output = "婢 M"
+    else:
+        if volume_level <= 20:
+            output = ""
+        elif volume_level <= 50:
+            output = "奔"
+        else:
+            output = "墳"
+        output += f" {volume_level}"
+
+    return output
+
+def poll_battery():
+    # CONFIGURATION
+    power_supply_path = "/sys/class/power_supply"
+    ac_name = "AC"
+    batteries = ["BAT0", "BAT1"]
+    charging_icons = ("", "", "", "", "", "", "")
+    charging_thresholds = (96, 90, 80, 60, 40, 20, 0)
+    not_charging_icons = ("", "", "", "", "", "", "", "", "", "")
+    not_charging_thresholds = (96, 90, 80, 70, 60, 50, 40, 30, 20, 0)
+
+    # ENERGY LEVEL + STATE DETERMINATION
+    is_charging = os.path.isfile(os.path.join(power_supply_path, ac_name, "online"))
+
+    energy_level = 0
+    energy_max = 0
+    try:
+        for battery in batteries:
+            with open(os.path.join(power_supply_path, battery, "energy_now")) as f:
+                energy_level += float(f.read().strip())
+            with open(os.path.join(power_supply_path, battery, "energy_full")) as f:
+                energy_max += float(f.read().strip())
+    except:
+        return "ERR"
+
+    battery_percent = int((energy_level / energy_max) * 100)
+
+    # ICON DETERMINATION
+
+    thresholds_and_icons = (
+        zip(charging_thresholds, charging_icons)
+        if is_charging
+        else zip(not_charging_thresholds, not_charging_icons)
+    )
+
+    output_icon = ""
+    for threshold, icon in thresholds_and_icons:
+        if battery_percent >= threshold:
+            output_icon = icon
+            break
+
+    # maximum energy level for a battery is not 100%.
+    # this hack outputs a practically full charging battery
+    # as a 100% charged battery
+    if output_icon == charging_icons[0]:
+        battery_percent = 100
+
+    return f"{output_icon} {battery_percent}%"
+
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(visible_groups=groups_by_screen[i]),
+                widget.Sep(linewidth = 1, padding = 10),
+                widget.CurrentLayout(),
+                widget.Sep(linewidth = 1, padding = 10),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.TextBox("default config", name="default"),
                 widget.Systray(),
-                widget.Volume(),
-                widget.BatteryIcon(),
-                widget.Clock(format="%I:%M %p"),
-                widget.Wlan(interface="wlp58s0"),
-                widget.QuickExit(),
+                widget.Sep(linewidth = 1, padding = 10),
+                widget.GenPollText(func=poll_audio, update_interval=1),
+                widget.Sep(linewidth = 1, padding = 10),
+                widget.GenPollText(func=poll_battery, update_interval=60),
+                widget.Sep(linewidth = 1, padding = 10),
+                widget.Wlan(
+                    format="直  {essid}",
+                    disconnected_message="睊  Disconnected",
+                    interface="wlp58s0",
+                ),
+                widget.Sep(linewidth = 1, padding = 10),
+                widget.Clock(format="  %I:%M %p"),
             ],
             24,
         ),
     )
     for i in range(len(groups_by_screen))
 ]
+
+# use genpolltext widget + my polybar script for combined battery
+# convert the code to python though
+
 
 # iwlib
 

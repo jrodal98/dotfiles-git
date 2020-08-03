@@ -270,6 +270,7 @@ tree
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
+ttf-font-awesome
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
