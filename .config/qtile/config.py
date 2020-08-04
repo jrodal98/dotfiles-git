@@ -227,11 +227,11 @@ def poll_battery():
     not_charging_thresholds = (96, 90, 80, 70, 60, 50, 40, 30, 20, 0)
 
     # ENERGY LEVEL + STATE DETERMINATION
-    is_charging = os.path.isfile(os.path.join(power_supply_path, ac_name, "online"))
-
     energy_level = 0
     energy_max = 0
     try:
+        with open(os.path.join(power_supply_path, ac_name, "online")) as f:
+            is_charging = float(f.read().strip()) == 1
         for battery in batteries:
             with open(os.path.join(power_supply_path, battery, "energy_now")) as f:
                 energy_level += float(f.read().strip())
