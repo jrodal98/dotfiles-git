@@ -60,6 +60,7 @@ efibootmgr
 electrum
 epdfview
 exfat-utils
+expect
 f2fs-tools
 fakeroot
 fd
@@ -114,6 +115,7 @@ inxi
 iproute2
 iputils
 jfsutils
+jpegoptim
 kitty
 kvantum-manjaro
 lazygit
@@ -133,7 +135,7 @@ libva-vdpau-driver
 licenses
 lightdm-settings
 lightdm-slick-greeter
-linux56
+linux-latest
 linux57
 linux57-virtualbox-host-modules
 logrotate
@@ -177,7 +179,6 @@ modemmanager
 morc_menu
 mousepad
 mpv
-mullvad-vpn-bin
 nano
 ncdu
 neofetch
@@ -226,6 +227,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-ctl
+qbittorrent
 qt5-styleplugins
 qt5ct
 qtile
@@ -254,6 +256,7 @@ spotify-tui-bin
 spotifyd-bin-full
 subversion
 sudo
+surfshark-vpn
 sysfsutils
 syslog-ng
 systemd
@@ -294,6 +297,7 @@ w3m
 wallpapers-juhraya
 wget
 which
+wireshark-qt
 wmctrl
 wmutils
 wpa_supplicant

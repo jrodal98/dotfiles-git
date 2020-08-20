@@ -109,7 +109,11 @@ keys = [
     Key([mod, "control"], "b", lazy.spawn(f"{TERMINAL} -e 'bmenu'")),
     Key([mod], "m", lazy.spawn(MAIL)),
     Key([mod], "s", lazy.spawn("signal-desktop")),
-    Key([mod, "shift"], "x", lazy.spawn("/home/jake/.config/qtile/scripts/qtile_exit.sh")),
+    Key(
+        [mod, "shift"],
+        "x",
+        lazy.spawn("/home/jake/.config/qtile/scripts/qtile_exit.sh"),
+    ),
 ]
 
 gdkdsp = Gdk.Display.get_default()
@@ -264,6 +268,7 @@ def poll_battery():
 
     return f"{output_icon} {battery_percent}%"
 
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -285,6 +290,21 @@ screens = [
                 ),
                 widget.Sep(linewidth=1, padding=10),
                 widget.GenPollText(func=poll_battery, update_interval=60),
+                widget.Sep(linewidth=1, padding=10),
+                widget.GenPollText(
+                    func=lambda: subprocess.run(
+                        ["/home/jake/.config/qtile/scripts/vpn.sh", "print-addr"],
+                        stdout=subprocess.PIPE,
+                    )
+                    .stdout.decode("utf-8")
+                    .strip(),
+                    update_interval=30,
+                    mouse_callbacks={
+                        "Button1": lambda qtile: qtile.cmd_spawn(
+                            "/home/jake/.config/qtile/scripts/vpn.sh toggle"
+                        )
+                    },
+                ),
                 widget.Sep(linewidth=1, padding=10),
                 widget.Wlan(
                     format="直  {essid}",
