@@ -23,21 +23,12 @@ ZSH_THEME="bira"
 
 plugins=(
     zsh-autosuggestions
-    zsh-vim-mode
     colored-man-pages
     extract
     autojump
     dotbare
     zsh-syntax-highlighting
 )
-# use the vi navigation keys in menu completion
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-
 
 source $ZSH/oh-my-zsh.sh
 # bind ctrl + space to accept autocomplete suggestion
