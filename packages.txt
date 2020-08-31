@@ -4,6 +4,7 @@ acpid
 alsa-firmware
 alsa-plugins
 alsa-utils
+android-studio
 apparmor
 arandr
 artwork-i3
@@ -20,6 +21,7 @@ bash-language-server
 bauh
 bear
 binutils
+birdtray
 bison
 blueman
 bluez-utils
@@ -28,6 +30,7 @@ brave-bin
 btrfs-progs
 bumblebee-status-git
 bzip2
+cadaver
 calibre
 cantarell-fonts
 ccls
@@ -35,10 +38,12 @@ clamav
 clipit
 cmatrix
 coreutils
+cozy-audiobooks
 cpupower
 crda
 cronie
 cryptsetup
+davfs2
 deluge
 deluge-gtk
 device-mapper
@@ -52,6 +57,7 @@ dmraid
 dnsmasq
 docker
 docker-compose
+dolphin
 dosfstools
 downgrade
 e2fsprogs
@@ -71,6 +77,7 @@ file
 filesystem
 filezilla
 findutils
+firefox
 flac
 flameshot
 flex
@@ -117,6 +124,8 @@ iproute2
 iputils
 jfsutils
 jpegoptim
+kactivities
+kdeconnect
 kitty
 kvantum-manjaro
 lazygit
@@ -146,7 +155,6 @@ lxappearance
 lxinput
 m4
 maia-console
-mailspring
 maim
 make
 man-db
@@ -180,6 +188,7 @@ modemmanager
 morc_menu
 mousepad
 mpv
+multibootusb
 nano
 ncdu
 neofetch
@@ -255,6 +264,7 @@ spectre-meltdown-checker
 speedtest-cli
 spotify-tui-bin
 spotifyd-bin-full
+sshfs
 subversion
 sudo
 surfshark-vpn
@@ -281,6 +291,7 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
+thunderbird-beta-bin
 tk
 tlp
 tmux
@@ -347,6 +358,7 @@ xz
 yarn
 yay
 youtube-dl
+ytop-bin
 zathura
 zathura-pdf-poppler
 zensu

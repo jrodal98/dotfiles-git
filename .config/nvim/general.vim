@@ -28,6 +28,7 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+autocmd BufEnter *.html.tera :setlocal filetype=htmldjango
 " * doesn't jump to next match
 nnoremap * m`:keepjumps normal! *``<cr>
 " substitute word and then enable repeat operator to

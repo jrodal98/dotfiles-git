@@ -49,8 +49,8 @@ from typing import List  # noqa: F401
 mod = "mod4"
 TERMINAL = "kitty"
 BROWSER = "brave"
-FILE_MANAGER = "pcmanfm"
-MAIL = "mailspring"
+FILE_MANAGER = "dolphin"
+MAIL = "thunderbird-beta"
 
 keys = [
     # Switch between windows in current stack pane
@@ -133,7 +133,7 @@ groups = (
     + [
         Group(
             all_groups[-1],
-            matches=[Match(wm_class=["Mailspring", "Signal"])],
+            matches=[Match(wm_class=["Mail", "Signal"])],
             layout="treetab",
         )
     ]
@@ -153,10 +153,10 @@ for j, names in enumerate(groups_by_screen):
     keys.extend([Key([mod, "shift"], i, lazy.window.togroup(i)) for i in all_groups])
 
 layout_theme = {
-    "border_width": 2,
+    "border_width": 0,
     "margin": 6,
-    "border_focus": "881111",
-    "border_normal": "1D2330",
+    # "border_focus": "881111",
+    # "border_normal": "1D2330",
     "single_margin": 0,
     # "single_border_width": 0,
 }
@@ -165,7 +165,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
-    # layout.Floating(**layout_theme),
+    layout.Floating(**layout_theme),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
