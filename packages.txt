@@ -18,8 +18,10 @@ b43-fwcutter
 balena-etcher
 bash
 bash-language-server
+bat
 bauh
 bear
+bind
 binutils
 birdtray
 bison
@@ -117,6 +119,7 @@ hexchat
 htop
 hugo
 hunspell-en_US
+imv
 inetutils
 intel-ucode
 inxi
@@ -148,6 +151,8 @@ lightdm-slick-greeter
 linux-latest
 linux57
 linux57-virtualbox-host-modules
+linux58
+linux58-virtualbox-host-modules
 logrotate
 lsof
 lvm2
@@ -203,6 +208,7 @@ networkmanager-pptp
 networkmanager-vpnc
 nfs-utils
 nmap
+nnn
 nodejs
 noto-fonts-emoji
 npm
@@ -275,6 +281,7 @@ systemd-fsck-silent
 systemd-sysvcompat
 tar
 taskell
+tcpdump
 terminus-font
 tesseract
 tesseract-data-eng
@@ -295,6 +302,7 @@ thunderbird-beta-bin
 tk
 tlp
 tmux
+traceroute
 tree
 ttf-bitstream-vera
 ttf-dejavu
@@ -322,6 +330,7 @@ w3m
 wallpapers-juhraya
 wget
 which
+whois
 wireshark-qt
 wmctrl
 wmutils
