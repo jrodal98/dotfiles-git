@@ -107,7 +107,7 @@ keys = [
     Key([mod, "shift"], "e", lazy.spawn(f"{FILE_MANAGER}")),
     Key([mod], "b", lazy.spawn(f"{BROWSER}")),
     Key([mod, "control"], "b", lazy.spawn(f"{TERMINAL} -e 'bmenu'")),
-    Key([mod], "g", lazy.spawn(f"grade-manager")),
+    Key([mod], "g", lazy.spawn("/home/jake/bin/grade-manager")),
     Key([mod], "m", lazy.spawn(MAIL)),
     Key([mod], "s", lazy.spawn("signal-desktop")),
     Key(
