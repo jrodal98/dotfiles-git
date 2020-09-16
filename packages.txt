@@ -52,6 +52,7 @@ device-mapper
 dfc
 dhclient
 dhcpcd
+dialog
 diffutils
 discord
 dmidecode
@@ -185,12 +186,14 @@ mesa-demos
 mesa-vdpau
 mhwd
 mhwd-db
+minicom
 mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
 moc
 modemmanager
 morc_menu
+moserial
 mousepad
 mpv
 multibootusb
@@ -231,6 +234,7 @@ pciutils
 pcmanfm
 perl
 perl-file-mimeinfo
+picocom
 pkgconf
 playerctl
 polkit-gnome
@@ -243,6 +247,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-ctl
+putty
 qbittorrent
 qt5-styleplugins
 qt5ct
@@ -260,6 +265,7 @@ rtv
 ruby
 s-nail
 sbxkb
+screen
 screenfetch
 sed
 shadow
@@ -315,6 +321,7 @@ unclutter
 upower
 usbutils
 util-linux
+uucp
 vertex-maia-themes
 vi
 vibrancy-icons-teal

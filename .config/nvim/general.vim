@@ -36,10 +36,6 @@ nnoremap * m`:keepjumps normal! *``<cr>
 nmap <Leader>sw *cgn
 " don't replace yanked text when pasting in visual mode
 vnoremap p "_dP
-" some attempts at removing \n when pasting
-nmap <Leader>P i<C-r>+<BS><ESC>
-nmap <Leader>p a<C-r>+<BS><ESC>
-vmap <Leader>p di<C-r>+<BS><ESC>
 
 " Window management and terminals
 set splitbelow splitright
@@ -104,3 +100,54 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+function InlineCommand()
+    let l:cmd = input('Command: ')
+    let l:output = system(l:cmd)
+    let l:output = substitute(l:output, '[\r\n]*$', '', '')
+    execute 'normal i' . l:output
+endfunction
+
+nmap <silent> <leader>ic :call InlineCommand()<CR>
+
+nnoremap <silent> <leader>ip :call SaveFile()<cr>
+
+" paste image from clipboard as markdown link
+" https://vi.stackexchange.com/a/14117/26252
+function! SaveFile() abort
+  let targets = filter(
+        \ systemlist('xclip -selection clipboard -t TARGETS -o'),
+        \ 'v:val =~# ''image''')
+  if empty(targets) | return | endif
+
+  let outdir = expand('%:p:h') . '/img'
+  if !isdirectory(outdir)
+    call mkdir(outdir)
+  endif
+
+  let mimetype = targets[0]
+  let extension = split(mimetype, '/')[-1]
+  let tmpfile = outdir . '/savefile_tmp.' . extension
+  call system(printf('xclip -selection clipboard -t %s -o > %s',
+        \ mimetype, tmpfile))
+
+  let cnt = 0
+  let filename = outdir . '/image' . cnt . '.' . extension
+  while filereadable(filename)
+    call system('diff ' . tmpfile . ' ' . filename)
+    if !v:shell_error
+      call delete(tmpfile)
+      break
+    endif
+
+    let cnt += 1
+    let filename = outdir . '/image' . cnt . '.' . extension
+  endwhile
+
+  if filereadable(tmpfile)
+    call rename(tmpfile, filename)
+  endif
+
+  let @* = '![](' . fnamemodify(filename, ':.') . ')'
+  normal! "*p
+endfunction
