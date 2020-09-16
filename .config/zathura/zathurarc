@@ -7,3 +7,4 @@ map r reload
 map R rotate
 map i recolor
 map p print
+set selection-clipboard clipboard
