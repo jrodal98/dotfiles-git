@@ -328,7 +328,6 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
 unclutter
-unityhub
 upower
 usbutils
 util-linux

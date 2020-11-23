@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # www.jrodal.dev
 
-# returns a shortened url
+# returns a shortened url and copies it to the clipboard
 
-curl -F"shorten=$1" https://0x0.st
+curl -s -F"shorten=$1" https://0x0.st | tee >(xclip -sel clip)
+echo 'URL copied to clipboard.'
