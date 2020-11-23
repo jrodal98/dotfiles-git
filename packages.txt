@@ -4,10 +4,10 @@ acpid
 alsa-firmware
 alsa-plugins
 alsa-utils
-android-studio
 apparmor
 arandr
 artwork-i3
+audacity
 autoconf
 autojump
 automake
@@ -23,7 +23,6 @@ bauh
 bear
 bind
 binutils
-birdtray
 bison
 blueman
 bluez-utils
@@ -86,6 +85,7 @@ flameshot
 flex
 gawk
 gcc
+gcc-fortran
 gcc-libs
 gcolor2
 gettext
@@ -96,6 +96,7 @@ glibc
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
+google-chrome
 gotop-bin
 gparted
 grep
@@ -116,6 +117,7 @@ gvfs-mtp
 gvfs-smb
 gzip
 hardcode-fixer
+heroku-cli-bin
 hexchat
 htop
 hugo
@@ -131,6 +133,7 @@ jpegoptim
 kactivities
 kdeconnect
 kitty
+konsole
 kvantum-manjaro
 lazygit
 less
@@ -155,6 +158,7 @@ linux57-virtualbox-host-modules
 linux58
 linux58-virtualbox-host-modules
 logrotate
+lrzsz
 lsof
 lvm2
 lxappearance
@@ -178,6 +182,7 @@ manjaro-release
 manjaro-settings-manager-notifier
 manjaro-system
 manjaro-zsh-config
+mariadb
 markdown_previewer
 matcha-gtk-theme
 mdadm
@@ -218,6 +223,7 @@ npm
 nss-mdns
 ntfs-3g
 ntp
+okular
 open-fuse-iso
 openresolv
 openssh
@@ -232,6 +238,7 @@ patchutils
 pavucontrol
 pciutils
 pcmanfm
+pdfjs
 perl
 perl-file-mimeinfo
 picocom
@@ -248,6 +255,7 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-ctl
 putty
+python36
 qbittorrent
 qt5-styleplugins
 qt5ct
@@ -265,8 +273,10 @@ rtv
 ruby
 s-nail
 sbxkb
+scrcpy
 screen
 screenfetch
+scribus
 sed
 shadow
 signal-desktop
@@ -318,6 +328,7 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
 unclutter
+unityhub
 upower
 usbutils
 util-linux
@@ -338,6 +349,8 @@ wallpapers-juhraya
 wget
 which
 whois
+wine
+winetricks
 wireshark-qt
 wmctrl
 wmutils

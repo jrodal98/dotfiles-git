@@ -16,10 +16,12 @@ alias db='dotbare'
 setopt rm_star_silent
 export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='bat'
+export MANPAGER='bat'
+export GIT_EDITOR='nvim'
 export TERMINAL='kitty'
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_USE_EDITOR=1
