@@ -271,6 +271,32 @@ def poll_battery():
     return f"{output_icon} {battery_percent}%"
 
 
+# only use one poll widget to prevent duplicate processes
+
+audio_widget = widget.GenPollText(
+    func=poll_audio,
+    update_interval=1,
+    mouse_callbacks={"Button1": lambda qtile: qtile.cmd_spawn("pavucontrol")},
+)
+
+battery_widget = widget.GenPollText(func=poll_battery, update_interval=60)
+
+
+vpn_widget = widget.GenPollText(
+    func=lambda: subprocess.run(
+        ["/home/jake/.config/qtile/scripts/vpn.sh", "print-addr"],
+        stdout=subprocess.PIPE,
+    )
+    .stdout.decode("utf-8")
+    .strip(),
+    update_interval=30,
+    mouse_callbacks={
+        "Button1": lambda qtile: qtile.cmd_spawn(
+            "/home/jake/.config/qtile/scripts/vpn.sh toggle"
+        )
+    },
+)
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -283,30 +309,11 @@ screens = [
                 widget.WindowName(),
                 widget.Systray(),
                 widget.Sep(linewidth=1, padding=10),
-                widget.GenPollText(
-                    func=poll_audio,
-                    update_interval=1,
-                    mouse_callbacks={
-                        "Button1": lambda qtile: qtile.cmd_spawn("pavucontrol")
-                    },
-                ),
+                audio_widget,
                 widget.Sep(linewidth=1, padding=10),
-                widget.GenPollText(func=poll_battery, update_interval=60),
+                battery_widget,
                 widget.Sep(linewidth=1, padding=10),
-                widget.GenPollText(
-                    func=lambda: subprocess.run(
-                        ["/home/jake/.config/qtile/scripts/vpn.sh", "print-addr"],
-                        stdout=subprocess.PIPE,
-                    )
-                    .stdout.decode("utf-8")
-                    .strip(),
-                    update_interval=30,
-                    mouse_callbacks={
-                        "Button1": lambda qtile: qtile.cmd_spawn(
-                            "/home/jake/.config/qtile/scripts/vpn.sh toggle"
-                        )
-                    },
-                ),
+                vpn_widget,
                 widget.Sep(linewidth=1, padding=10),
                 widget.Wlan(
                     format="直  {essid}",

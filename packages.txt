@@ -316,6 +316,7 @@ thunderbird-beta-bin
 tk
 tlp
 tmux
+topgrade
 traceroute
 tree
 ttf-bitstream-vera
