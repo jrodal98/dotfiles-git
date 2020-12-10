@@ -271,6 +271,19 @@ def poll_battery():
     return f"{output_icon} {battery_percent}%"
 
 
+def poll_dunst():
+    try:
+        dunst_status = (
+            subprocess.run(["dunstctl", "is-paused"], stdout=subprocess.PIPE)
+            .stdout.decode("utf-8")
+            .strip()
+        )
+
+        return "" if dunst_status == "false" else ""
+    except:
+        return "ERR"
+
+
 # only use one poll widget to prevent duplicate processes
 
 audio_widget = widget.GenPollText(
@@ -297,6 +310,14 @@ vpn_widget = widget.GenPollText(
     },
 )
 
+dunst_widget = widget.GenPollText(
+    func=poll_dunst,
+    update_interval=5,
+    mouse_callbacks={
+        "Button1": lambda qtile: qtile.cmd_spawn("dunstctl set-paused toggle")
+    },
+)
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -308,6 +329,8 @@ screens = [
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),
+                widget.Sep(linewidth=1, padding=10),
+                dunst_widget,
                 widget.Sep(linewidth=1, padding=10),
                 audio_widget,
                 widget.Sep(linewidth=1, padding=10),
