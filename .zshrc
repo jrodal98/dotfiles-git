@@ -19,8 +19,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export PATH="$HOME/go/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PAGER='bat'
-export MANPAGER='bat'
 export GIT_EDITOR='nvim'
 export TERMINAL='kitty'
 export NNN_FIFO=/tmp/nnn.fifo
@@ -42,3 +40,5 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 # bind ctrl + space to accept autocomplete suggestion
 bindkey '^j' autosuggest-accept
+
+eval "$(starship init zsh)"

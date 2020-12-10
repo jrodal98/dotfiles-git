@@ -37,3 +37,13 @@ endsnippet
 snippet devnull "Send everything to dev null" i
 > /dev/null 2>&1
 endsnippet
+
+snippet curl_multiple "Curl for loop" b
+urls=("url1" "url2")
+
+for url in "${urls[@]}"
+do
+	echo "Downloading $url..."
+	curl -O "$url"
+done
+endsnippet

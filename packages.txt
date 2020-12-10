@@ -39,7 +39,6 @@ clamav
 clipit
 cmatrix
 coreutils
-cozy-audiobooks
 cpupower
 crda
 cronie
@@ -117,7 +116,6 @@ gvfs-mtp
 gvfs-smb
 gzip
 hardcode-fixer
-heroku-cli-bin
 hexchat
 htop
 hugo
