@@ -2,6 +2,5 @@
 # www.jrodal.dev
 
 pacman -Qqe > $HOME/packages.txt
-$HOME/.githooks/gen_zsh_plugin_install_script.sh
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME add $HOME/packages.txt $HOME/.install_zsh_plugins.sh
-echo "packages.txt and .install_zsh_plugins.sh updated and added to commit"
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME add $HOME/packages.txt
+echo "packages.txt updated and added to commit"
