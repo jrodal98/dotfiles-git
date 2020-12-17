@@ -6,7 +6,6 @@ alias todo="taskell $HOME/todo.md"
 alias notepad='nvim ~/Notes/notepad.md'
 alias lg='lazygit'
 
-alias szsh='source ~/.zshrc'
 alias yd='youtube-dl'
 
 export DOTBARE_DIR="$HOME/.dotfiles"
@@ -14,7 +13,6 @@ export DOTBARE_TREE="$HOME"
 alias db='dotbare'
 
 setopt rm_star_silent
-export ZSH="/home/jake/.oh-my-zsh"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export PATH="$HOME/go/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR='nvim'
@@ -26,18 +24,30 @@ export NNN_USE_EDITOR=1
 export NNN_BMS='v:~/Videos;h:~;p:~/Projects;s:~/School'
 export NNN_PLUG='g:-_git diff;p:preview-tui'
 
-ZSH_THEME="bira"
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
 
-plugins=(
-    zsh-autosuggestions
-    colored-man-pages
-    extract
-    autojump
-    dotbare
-    zsh-syntax-highlighting
-)
+# if the init script doesn't exist
+if ! zgen saved; then
 
-source $ZSH/oh-my-zsh.sh
+  zgen oh-my-zsh
+
+  # plugins
+
+  zgen oh-my-zsh plugins/extract
+  zgen oh-my-zsh plugins/colored-man-pages
+  zgen oh-my-zsh plugins/autojump # note: install autojump first
+
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load zsh-users/zsh-completions src
+
+  zgen load kazhala/dotbare
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
 # bind ctrl + space to accept autocomplete suggestion
 bindkey '^j' autosuggest-accept
 

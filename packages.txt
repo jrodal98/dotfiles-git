@@ -29,7 +29,6 @@ bluez-utils
 bmenu
 brave-bin
 btrfs-progs
-bumblebee-status-git
 bzip2
 cadaver
 calibre
@@ -285,6 +284,7 @@ speedtest-cli
 spotify-tui-bin
 spotifyd-bin-full
 sshfs
+stacer
 subversion
 sudo
 surfshark-vpn
