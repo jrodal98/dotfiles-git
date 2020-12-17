@@ -438,6 +438,13 @@ def start_once():
     home = os.path.expanduser("~")
     subprocess.call([home + "/.config/qtile/autostart.sh"])
 
+# crashes qtile for some reason, despite being copy-pasted from the docs...
+# there's a github issue for it that has gone state.
+# from libqtile import qtile as libqtile_qtile
+# @hook.subscribe.screen_change
+# def restart_on_randr(ev):
+#     libqtile_qtile.cmd_restart()
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
