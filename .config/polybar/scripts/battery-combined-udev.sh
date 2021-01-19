@@ -65,7 +65,7 @@ battery_print() {
 
         if [ ! -f "$charging_file" ]; then
             touch $charging_file
-            notify-send -i "/home/jake/.local/share/icons/dunst_icons/icons8-charging-battery-48.png" "Charging" "Laptop charging"
+            notify-send -i "/home/jrodal/.local/share/icons/dunst_icons/icons8-charging-battery-48.png" "Charging" "Laptop charging"
             if [ -f "$low_battery_file" ]; then
                 rm $low_battery_file
             fi
@@ -94,7 +94,7 @@ battery_print() {
             icon=""
             if [ ! -f "$low_battery_file" ]; then
                 touch $low_battery_file
-                notify-send -i "/home/jake/.local/share/icons/dunst_icons/icons8-low-battery-48.png" -u critical "Low Battery" "Better find an outlet"
+                notify-send -i "/home/jrodal/.local/share/icons/dunst_icons/icons8-low-battery-48.png" -u critical "Low Battery" "Better find an outlet"
             fi
 
         fi

@@ -1,6 +1,7 @@
 accountsservice
 acpi
 acpid
+adduser
 alsa-firmware
 alsa-plugins
 alsa-utils

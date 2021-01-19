@@ -1,5 +1,5 @@
 #!/bin/sh
 # script instructions here https://github.com/phillipberndt/autorandr
-notify-send 'Display' 'Monitor change detected.' -i /home/jake/.local/share/icons/dunst_icons/display64.png
+notify-send 'Display' 'Monitor change detected.' -i /home/jrodal/.local/share/icons/dunst_icons/display64.png
 xrandr --auto
 # setxkbmap -option caps:swapescape

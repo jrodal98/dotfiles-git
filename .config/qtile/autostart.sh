@@ -6,7 +6,7 @@ flameshot &
 redshift -l 38.0288319:-78.4896762 -t 5000:3000 &
 thunderbird-beta &
 signal-desktop --start-in-tray --use-tray-icon &
-feh --bg-scale /home/jake/Pictures/wallpapers/arch_windows_cursed.png &
+feh --bg-scale /home/jrodal/Pictures/wallpapers/arch_windows_cursed.png &
 unclutter &
 fix_xcursor &
 picom -b &

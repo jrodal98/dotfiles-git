@@ -156,7 +156,7 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/jake/.local/share/icons/dunst_icons/
+    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/jrodal/.local/share/icons/dunst_icons/
 
     ### History ###
 
@@ -254,15 +254,15 @@
     foreground = "#f5f8f6"
     frame_color = "#e3788f"
     timeout = 0
-    icon = /home/jake/.local/share/icons/dunst_icons/icons8-high-importance-48.png
+    icon = /home/jrodal/.local/share/icons/dunst_icons/icons8-high-importance-48.png
 
 # [set_rambox_urgent]
 #     appname = Rambox
-#     script = /home/jake/.config/dunst/mark_window_urgent.sh
+#     script = /home/jrodal/.config/dunst/mark_window_urgent.sh
 
 # [set_thunderbird_urgent]
 #     appname = Thunderbird
-#     script = /home/jake/.config/dunst/mark_window_urgent.sh
+#     script = /home/jrodal/.config/dunst/mark_window_urgent.sh
 
 [change_flameshot]
     appname = flameshot

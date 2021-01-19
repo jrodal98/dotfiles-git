@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-source /home/jake/.zshrc
+source /home/jrodal/.zshrc
 cd ~/Notes
 notepad
 

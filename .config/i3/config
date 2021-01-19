@@ -358,8 +358,8 @@ bindsym $mod+g exec $HOME/bin/grade-manager
 # screenshots
 
 exec --no-startup-id flameshot
-bindsym Print exec /home/jake/.config/dunst/screenshot.sh flameshot full
-bindsym Control+Print exec /home/jake/.config/dunst/screenshot.sh flameshot select
+bindsym Print exec /home/jrodal/.config/dunst/screenshot.sh flameshot full
+bindsym Control+Print exec /home/jrodal/.config/dunst/screenshot.sh flameshot select
 
 # file managers
 bindsym $mod+m exec $TERMINAL -e ranger
@@ -380,13 +380,13 @@ exec --no-startup-id redshift -l 38.0288319:-78.4896762 -t 5000:3000
 
 exec mailspring
 exec signal-desktop --start-in-tray --use-tray-icon
-exec_always feh --bg-scale /home/jake/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
+exec_always feh --bg-scale /home/jrodal/Pictures/wallpapers/blue-night-sky-wallpaper.jpg
 
 # exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
-# exec --no-startup-id xautolock -time 10 -locker /home/jake/.config/i3/toggle-lock
+# exec --no-startup-id xautolock -time 10 -locker /home/jrodal/.config/i3/toggle-lock
 exec_always --no-startup-id fix_xcursor
 
 

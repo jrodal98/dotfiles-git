@@ -48,6 +48,7 @@ if ! zgen saved; then
   zgen save
 fi
 
+bindkey -v
 # bind ctrl + space to accept autocomplete suggestion
 bindkey '^j' autosuggest-accept
 

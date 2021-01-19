@@ -96,25 +96,25 @@ keys = [
     Key([mod], "Right", lazy.spawn("playerctl -p spotifyd next")),
     Key([mod], "space", lazy.spawn("rofi -modi 'drun#ssh' -show drun -show-icons")),
     Key(
-        [], "Print", lazy.spawn("/home/jake/.config/dunst/screenshot.sh flameshot full")
+        [], "Print", lazy.spawn("/home/jrodal/.config/dunst/screenshot.sh flameshot full")
     ),
     Key(
         ["control"],
         "Print",
-        lazy.spawn("/home/jake/.config/dunst/screenshot.sh flameshot select"),
+        lazy.spawn("/home/jrodal/.config/dunst/screenshot.sh flameshot select"),
     ),
     Key([mod], "e", lazy.spawn(f"{TERMINAL} -e ranger")),
     Key([mod, "shift"], "e", lazy.spawn(FILE_MANAGER)),
     Key([mod], "b", lazy.spawn(f"{BROWSER}")),
     Key([mod], "r", lazy.spawn(f"{TERMINAL} -e rtv")),
     Key([mod, "control"], "b", lazy.spawn(f"{TERMINAL} -e 'bmenu'")),
-    Key([mod], "g", lazy.spawn("/home/jake/bin/grade-manager")),
+    Key([mod], "g", lazy.spawn("/home/jrodal/bin/grade-manager")),
     Key([mod], "m", lazy.spawn(MAIL)),
     Key([mod], "s", lazy.spawn("signal-desktop")),
     Key(
         [mod, "shift"],
         "x",
-        lazy.spawn("/home/jake/.config/qtile/scripts/qtile_exit.sh"),
+        lazy.spawn("/home/jrodal/.config/qtile/scripts/qtile_exit.sh"),
     ),
 ]
 
@@ -297,7 +297,7 @@ battery_widget = widget.GenPollText(func=poll_battery, update_interval=60)
 
 vpn_widget = widget.GenPollText(
     func=lambda: subprocess.run(
-        ["/home/jake/.config/qtile/scripts/vpn.sh", "print-addr"],
+        ["/home/jrodal/.config/qtile/scripts/vpn.sh", "print-addr"],
         stdout=subprocess.PIPE,
     )
     .stdout.decode("utf-8")
@@ -305,7 +305,7 @@ vpn_widget = widget.GenPollText(
     update_interval=30,
     mouse_callbacks={
         "Button1": lambda qtile: qtile.cmd_spawn(
-            "/home/jake/.config/qtile/scripts/vpn.sh toggle"
+            "/home/jrodal/.config/qtile/scripts/vpn.sh toggle"
         )
     },
 )
