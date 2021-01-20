@@ -18,7 +18,6 @@ awesome-terminal-fonts
 b43-fwcutter
 balena-etcher
 bash
-bash-language-server
 bat
 bauh
 bear

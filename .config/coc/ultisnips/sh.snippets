@@ -47,3 +47,19 @@ do
 	curl -O "$url"
 done
 endsnippet
+
+snippet check_file_exist "Check if a file exists" b
+if [ -f "${1}" ]; then
+	echo "${1} exists."
+else
+	echo "${1} does not exist."
+fi
+endsnippet
+
+snippet check_dir_exist "Check if a directory exists" b
+if [ -d "${1}" ]; then
+	echo "${1} exists."
+else
+	echo "${1} does not exist."
+fi
+endsnippet
