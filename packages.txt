@@ -226,6 +226,7 @@ open-fuse-iso
 openresolv
 openssh
 os-prober
+otf-san-francisco-pro
 p7zip
 pacman
 pamac-gtk
@@ -240,6 +241,7 @@ pdfjs
 perl
 perl-file-mimeinfo
 picocom
+piper
 pkgconf
 playerctl
 polkit-gnome

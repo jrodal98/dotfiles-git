@@ -19,8 +19,8 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export GIT_EDITOR='nvim'
 export TERMINAL='kitty'
+alias nnn='nnn -e'
 export NNN_FIFO=/tmp/nnn.fifo
-export NNN_USE_EDITOR=1
 export NNN_BMS='v:~/Videos;h:~;p:~/Projects;s:~/School'
 export NNN_PLUG='g:-_git diff;p:preview-tui'
 

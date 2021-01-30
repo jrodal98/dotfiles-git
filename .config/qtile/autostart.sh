@@ -12,3 +12,4 @@ fix_xcursor &
 picom -b &
 xrdb ~/.Xresources &
 kdeconnect-indicator &
+clipit &
