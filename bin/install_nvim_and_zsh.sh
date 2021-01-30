@@ -69,6 +69,13 @@ function common_install() {
     mv "$temp_dir/dotfiles/.config/nvim" "${HOME}/.config/nvim"
     mv "$temp_dir/dotfiles/.config/coc" "${HOME}/.config/coc"
 
+    echo "Creating python venv"
+    python -m venv ~/.config/nvim/nvim_venv
+    ~/.config/nvim/nvim_venv/bin/pip install pylint black
+    mkdir -p ~/bin
+    ln -s ~/.config/nvim/nvim_venv/bin/black ~/bin/black
+    ln -s ~/.config/nvim/nvim_venv/bin/pylint ~/bin/pylint
+
     cur_dir=$(pwd)
     cd "${HOME}/.config/coc/extensions/"
     yarn install

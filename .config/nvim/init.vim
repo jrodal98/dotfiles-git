@@ -52,4 +52,5 @@ exec 'source' '~/.config/nvim/general.vim'
 if !exists('g:vscode')
     " for settings in the complete plugins
     exec 'source' '~/.config/nvim/complete.vim'
+    exec 'source' '~/.config/nvim/coc.vim'
 endif
