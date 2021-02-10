@@ -49,7 +49,7 @@ from typing import List  # noqa: F401
 mod = "mod4"
 TERMINAL = "kitty"
 BROWSER = "brave"
-FILE_MANAGER = "dolphin"
+FILE_MANAGER = "pcmanfm"
 MAIL = "thunderbird-beta"
 
 keys = [
