@@ -1,0 +1,65 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet bang "shebang" b
+#!/usr/bin/env bash
+# www.jrodal.dev
+
+
+endsnippet
+
+snippet error "Notify about an error" i
+notify-send -i "${1:PATH_TO_ICON}" "Error in shell script" "${2:MSG_HERE}"
+endsnippet
+
+snippet devnull "Send everything to dev null" i
+> /dev/null 2>&1
+endsnippet
+
+snippet curl_multiple "Curl for loop" b
+urls=("url1" "url2")
+
+for url in "${urls[@]}"
+do
+	echo "Downloading $url..."
+	curl -O "$url"
+done
+endsnippet
+
+snippet check_file_exist "Check if a file exists" b
+if [ -f "${1}" ]; then
+	echo "${1} exists."
+else
+	echo "${1} does not exist."
+fi
+endsnippet
+
+snippet check_dir_exist "Check if a directory exists" b
+if [ -d "${1}" ]; then
+	echo "${1} exists."
+else
+	echo "${1} does not exist."
+fi
+endsnippet

@@ -1,0 +1,55 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet hugo-post "Hugo blog post header" b
+---
+title: "$1"
+date: "$2 use the date snippet"
+description: "$1"
+tags: [
+"$3",
+]
+type: "post"
+---
+
+Summary here
+<!--more-->
+
+
+endsnippet
+
+snippet hugo-img "A centered hugo img" b
+<div align="center"
+<figure>
+	<img src="$1"/>
+	<figcaption>
+		<h4>$2</h4>
+	</figcaption>
+</figure>
+</div>
+endsnippet
+
+

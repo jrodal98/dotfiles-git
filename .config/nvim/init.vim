@@ -19,9 +19,11 @@ Plug 'Yggdroot/indentLine'
 
 " Complete (ide and visual experience) settings
 if !exists('g:vscode')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'jalvesaq/Nvim-R'
     Plug 'rust-lang/rust.vim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'kosayoda/nvim-lightbulb'
+    Plug 'nvim-lua/completion-nvim'
     Plug 'mhinz/vim-startify'
     Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
@@ -35,10 +37,10 @@ if !exists('g:vscode')
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'chriskempson/base16-vim'
-    Plug 'dense-analysis/ale'
+    " Plug 'dense-analysis/ale'
     Plug 'Chiel92/vim-autoformat'
+    Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    Plug '2072/PHP-Indenting-for-VIm'
     Plug 'luochen1990/rainbow'
 endif
 call plug#end()
@@ -52,5 +54,6 @@ exec 'source' '~/.config/nvim/general.vim'
 if !exists('g:vscode')
     " for settings in the complete plugins
     exec 'source' '~/.config/nvim/complete.vim'
-    exec 'source' '~/.config/nvim/coc.vim'
+    exec 'source' '~/.config/nvim/lsp.vim'
 endif
+

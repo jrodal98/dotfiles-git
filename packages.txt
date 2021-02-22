@@ -203,7 +203,7 @@ mpv
 nano
 ncdu
 neofetch
-neovim
+neovim-nightly-bin
 netctl
 network-manager-applet
 networkmanager
