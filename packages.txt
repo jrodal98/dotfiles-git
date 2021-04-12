@@ -52,6 +52,7 @@ dhcpcd
 dialog
 diffutils
 discord
+displaylink
 dmidecode
 dmraid
 dnsmasq
@@ -119,7 +120,7 @@ hardcode-fixer
 hexchat
 htop
 hugo
-hunspell-en_US
+hunspell-en_us
 imv
 inetutils
 intel-ucode
@@ -152,6 +153,10 @@ lightdm-settings
 lightdm-slick-greeter
 linux-latest
 linux510
+linux510-headers
+linux511
+linux511-headers
+linux511-virtualbox-host-modules
 linux54
 logrotate
 lrzsz
@@ -249,6 +254,7 @@ poppler-data
 powertop
 procps-ng
 progress
+protonmail-bridge
 psmisc
 pulseaudio
 pulseaudio-alsa
