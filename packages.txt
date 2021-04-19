@@ -16,7 +16,6 @@ autorandr
 avahi
 awesome-terminal-fonts
 b43-fwcutter
-balena-etcher
 bash
 bat
 bauh

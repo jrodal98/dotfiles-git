@@ -1,7 +1,5 @@
-" Good content for keybindings here
-" https://github.com/kosayoda/nvim-dotfiles/blob/master/lua/lsp.lua
-lua << EOF
-local nvim_lsp = require('lspconfig')
+-- Good content for keybindings here
+--" https://github.com/kosayoda/nvim-dotfiles/blob/master/lua/lsp.lua
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -46,30 +44,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
--- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
-EOF
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:completion_enable_snippet = 'UltiSnips'
-
-let g:UltiSnipsExpandTrigger="\<C-y>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+require'lspconfig'.rust_analyzer.setup{ on_attach = on_attach }
+require'lspconfig'.pyright.setup{ on_attach = on_attach }
+require'lspconfig'.bashls.setup{ on_attach = on_attach }

@@ -19,7 +19,6 @@ Plug 'Yggdroot/indentLine'
 
 " Complete (ide and visual experience) settings
 if !exists('g:vscode')
-    Plug 'jalvesaq/Nvim-R'
     Plug 'rust-lang/rust.vim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'kosayoda/nvim-lightbulb'
@@ -27,6 +26,7 @@ if !exists('g:vscode')
     Plug 'mhinz/vim-startify'
     Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'plasticboy/vim-markdown'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     Plug 'vim-airline/vim-airline'
@@ -46,14 +46,24 @@ endif
 call plug#end()
 
 
-" for settings in the minimal plugins
-exec 'source' '~/.config/nvim/minimal.vim'
-" for settings that are plugin agnostic
-exec 'source' '~/.config/nvim/general.vim'
+source ~/.config/nvim/general.vim
+
+source ~/.config/nvim/plug-config/cutlass.vim
+source ~/.config/nvim/plug-config/supertab.vim
 
 if !exists('g:vscode')
-    " for settings in the complete plugins
-    exec 'source' '~/.config/nvim/complete.vim'
-    exec 'source' '~/.config/nvim/lsp.vim'
+    source ~/.config/nvim/plug-config/startify.vim
+    source ~/.config/nvim/plug-config/nerdtree.vim
+    source ~/.config/nvim/plug-config/airline.vim
+    source ~/.config/nvim/plug-config/vim-markdown.vim
+    source ~/.config/nvim/plug-config/markdown-preview.vim
+    source ~/.config/nvim/plug-config/rainbow.vim
+    source ~/.config/nvim/plug-config/vim-autoformat.vim
+    source ~/.config/nvim/plug-config/onedark.vim
+    source ~/.config/nvim/plug-config/ultisnips.vim
+    source ~/.config/nvim/plug-config/completion-nvim.vim
+
+    luafile ~/.config/nvim/lua/lsp/lsp-config.lua
+    luafile ~/.config/nvim/lua/plug-config/tree-sitter-config.lua
 endif
 

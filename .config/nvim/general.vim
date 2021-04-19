@@ -101,6 +101,8 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+set conceallevel=0 
+
 function InlineCommand()
     let l:cmd = input('Command: ')
     let l:output = system(l:cmd)
