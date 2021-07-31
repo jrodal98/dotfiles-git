@@ -21,6 +21,7 @@ Plug 'Yggdroot/indentLine'
 if !exists('g:vscode')
     Plug 'rust-lang/rust.vim'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'kabouzeid/nvim-lspinstall'
     Plug 'kosayoda/nvim-lightbulb'
     Plug 'nvim-lua/completion-nvim'
     Plug 'mhinz/vim-startify'
