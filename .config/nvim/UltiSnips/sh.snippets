@@ -25,13 +25,17 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 snippet bang "shebang" b
 #!/usr/bin/env bash
-# www.jrodal.dev
+# www.jrodal.com
 
 
 endsnippet
 
-snippet error "Notify about an error" i
+snippet notify_error "Notify about an error" i
 notify-send -i "${1:PATH_TO_ICON}" "Error in shell script" "${2:MSG_HERE}"
+endsnippet
+
+snippet echo_stderr "Echo command to stderr" i
+>&2 echo "${1}"
 endsnippet
 
 snippet devnull "Send everything to dev null" i

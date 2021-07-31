@@ -47,7 +47,7 @@ end
 require'lspconfig'.rust_analyzer.setup{ on_attach = on_attach }
 require'lspconfig'.pyright.setup{ on_attach = on_attach }
 require'lspconfig'.bashls.setup{ on_attach = on_attach }
-require'lspconfig'.clangd.setup{ on_attach = on_attach }
+require'lspconfig'.ccls.setup{ on_attach = on_attach }
 
 vim.fn.sign_define(
     "LspDiagnosticsSignError",

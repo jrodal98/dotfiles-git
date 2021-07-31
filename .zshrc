@@ -24,6 +24,10 @@ export NNN_FIFO=/tmp/nnn.fifo
 export NNN_BMS='v:~/Videos;h:~;p:~/Projects;s:~/School'
 export NNN_PLUG='g:-_git diff;p:preview-tui'
 
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux
+# fi
+
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
 
@@ -53,3 +57,5 @@ bindkey -v
 bindkey '^j' autosuggest-accept
 
 eval "$(starship init zsh)"
+
+eval "$(mcfly init zsh)"

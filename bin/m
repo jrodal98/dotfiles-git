@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# www.jrodal.dev
+
+FIRST_OPTIONS=('Mount' 'Unmount' 'Quit')
+SECOND_OPTIONS=("Audiobooks" "Private" "Public" "Videos" "Quit")
+
+HOSTNAME='ubuntu'
+IP_ADDR='192.168.0.104'
+LOCAL_DIR="$HOME/samba"
+PS3='Please enter your choice: '
+
+function main() {
+    select opt in "${FIRST_OPTIONS[@]}"
+    do
+        case $opt in
+            Mount)
+                mount_samba $(get_volume)
+                break
+                ;;
+            Unmount)
+                umount_samba $(get_volume)
+                break
+                ;;
+            Quit)
+                exit 0
+                ;;
+            *) >&2 echo "invalid option $REPLY";;
+        esac
+    done
+
+}
+
+function mount_samba() {
+    volume="$1"
+    mount_dir="${LOCAL_DIR}/${volume}"
+    mkdir -p "$mount_dir"
+    sudo mount -t cifs -o username="$HOSTNAME",uid=$(id -u),gid=$(id -g) "//${IP_ADDR}/${volume}" "$mount_dir"
+}
+
+function umount_samba() {
+    sudo umount -l "${LOCAL_DIR}/${1}"
+}
+
+
+
+function get_volume() {
+    select opt in "${SECOND_OPTIONS[@]}"
+    do
+        case $opt in
+            Audiobooks|Private|Public|Videos)
+                echo "$opt"
+                break
+                ;;
+            Unmount)
+                
+                break
+                ;;
+            Quit)
+                exit 0
+                ;;
+            *) >&2 echo "invalid option $REPLY";;
+        esac
+    done
+}
+
+main

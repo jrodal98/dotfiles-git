@@ -14,8 +14,10 @@ autojump
 automake
 autorandr
 avahi
+awesome-git
 awesome-terminal-fonts
 b43-fwcutter
+balena-etcher
 bash
 bat
 bauh
@@ -33,6 +35,7 @@ cadaver
 calibre
 cantarell-fonts
 ccls
+cheat-bin
 clamav
 clipit
 cmatrix
@@ -123,9 +126,11 @@ hunspell-en_us
 imv
 inetutils
 intel-ucode
+inter-font
 inxi
 iproute2
 iputils
+jellyfin-media-player
 jfsutils
 jpegoptim
 kactivities
@@ -185,6 +190,7 @@ manjaro-zsh-config
 mariadb
 markdown_previewer
 matcha-gtk-theme
+mcfly
 mdadm
 meld
 memtest86+
@@ -203,11 +209,13 @@ moneydance
 morc_menu
 moserial
 mousepad
+mp3splt
+mp3splt-gtk
 mpv
 nano
 ncdu
 neofetch
-neovim-nightly-bin
+neovim
 netctl
 network-manager-applet
 networkmanager
@@ -216,6 +224,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+networkmanager-wireguard
 nfs-utils
 nmap
 nnn
@@ -277,6 +286,7 @@ rofi
 rsync
 rtv
 ruby
+rust-analyzer
 s-nail
 sbxkb
 scrcpy
@@ -340,6 +350,7 @@ upower
 usbutils
 util-linux
 uucp
+vbam-wx
 vertex-maia-themes
 vi
 vibrancy-icons-teal
@@ -358,6 +369,7 @@ which
 whois
 wine
 winetricks
+wireguard-tools
 wireshark-qt
 wmctrl
 wmutils
