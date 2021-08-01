@@ -37,7 +37,7 @@ from libqtile.config import (
     Rule,
 )
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget, hook, qtile
 import gi
 import subprocess
 
@@ -289,7 +289,7 @@ def poll_dunst():
 audio_widget = widget.GenPollText(
     func=poll_audio,
     update_interval=1,
-    mouse_callbacks={"Button1": lambda qtile: qtile.cmd_spawn("pavucontrol")},
+    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
 )
 
 battery_widget = widget.GenPollText(func=poll_battery, update_interval=60)
@@ -304,7 +304,7 @@ vpn_widget = widget.GenPollText(
     .strip(),
     update_interval=30,
     mouse_callbacks={
-        "Button1": lambda qtile: qtile.cmd_spawn(
+        "Button1": lambda: qtile.cmd_spawn(
             "/home/jrodal/.config/qtile/scripts/vpn.sh toggle"
         )
     },
@@ -314,7 +314,7 @@ dunst_widget = widget.GenPollText(
     func=poll_dunst,
     update_interval=5,
     mouse_callbacks={
-        "Button1": lambda qtile: qtile.cmd_spawn("dunstctl set-paused toggle")
+        "Button1": lambda: qtile.cmd_spawn("dunstctl set-paused toggle")
     },
 )
 
@@ -343,7 +343,7 @@ screens = [
                     disconnected_message="睊  Disconnected",
                     interface="wlp58s0",
                     mouse_callbacks={
-                        "Button1": lambda qtile: qtile.cmd_spawn("networkmanager_dmenu")
+                        "Button1": lambda: qtile.cmd_spawn("networkmanager_dmenu")
                     },
                 ),
                 widget.Sep(linewidth=1, padding=10),
