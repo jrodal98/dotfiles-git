@@ -39,7 +39,7 @@ function os_specific_install() {
 function backup() {
     if [[ -e "$1" ]]; then
         echo "Backing up $1"
-        cp -r "$1" "$1.bak"
+        mv "$1" "$1.bak"
     fi
 }
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # www.jrodal.dev
 
+set -e
+
 FIRST_OPTIONS=('Mount' 'Unmount' 'Quit')
 SECOND_OPTIONS=("Audiobooks" "Private" "Public" "Videos" "Quit")
 
@@ -14,11 +16,15 @@ function main() {
     do
         case $opt in
             Mount)
-                mount_samba $(get_volume)
+                volume=$(get_volume)
+                mount_samba "$volume"
+                echo "Successfully mounted $volume"
                 break
                 ;;
             Unmount)
-                umount_samba $(get_volume)
+                volume=$(get_volume)
+                umount_samba "$volume"
+                echo "Successfully unmounted $volume"
                 break
                 ;;
             Quit)
@@ -34,13 +40,23 @@ function mount_samba() {
     volume="$1"
     mount_dir="${LOCAL_DIR}/${volume}"
     mkdir -p "$mount_dir"
-    sudo mount -t cifs -o username="$HOSTNAME",uid=$(id -u),gid=$(id -g) "//${IP_ADDR}/${volume}" "$mount_dir"
+    password=$(get_password)
+    sudo mount -t cifs -o username="${HOSTNAME}",password="${password}",uid=$(id -u),gid=$(id -g) "//${IP_ADDR}/${volume}" "$mount_dir"
 }
 
 function umount_samba() {
     sudo umount -l "${LOCAL_DIR}/${1}"
 }
 
+function get_password() {
+    if command -v pass &> /dev/null
+    then
+        password=$(pass samba) || { >&2 echo 'Run `pass insert samba` before running this script'; exit 1; }
+    else
+        read -s -p "$HOSTNAME samba password: " password
+    fi
+    echo "$password"
+}
 
 
 function get_volume() {
@@ -51,12 +67,8 @@ function get_volume() {
                 echo "$opt"
                 break
                 ;;
-            Unmount)
-                
-                break
-                ;;
             Quit)
-                exit 0
+                exit 1
                 ;;
             *) >&2 echo "invalid option $REPLY";;
         esac
