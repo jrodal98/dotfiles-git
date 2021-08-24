@@ -350,6 +350,7 @@ upower
 usbutils
 util-linux
 uucp
+v4l2loopback-dkms
 vbam-wx
 vertex-maia-themes
 vi
@@ -410,4 +411,3 @@ ytop-bin
 zathura
 zathura-pdf-poppler
 zensu
-zoom

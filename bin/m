@@ -4,7 +4,7 @@
 set -e
 
 FIRST_OPTIONS=('Mount' 'Unmount' 'Quit')
-SECOND_OPTIONS=("Audiobooks" "Private" "Public" "Videos" "Quit")
+SECOND_OPTIONS=("Audiobooks" "Books" "Private" "Public" "Videos" "Quit")
 
 HOSTNAME='ubuntu'
 IP_ADDR='192.168.0.104'
@@ -63,7 +63,7 @@ function get_volume() {
     select opt in "${SECOND_OPTIONS[@]}"
     do
         case $opt in
-            Audiobooks|Private|Public|Videos)
+            Audiobooks|Books|Private|Public|Videos)
                 echo "$opt"
                 break
                 ;;

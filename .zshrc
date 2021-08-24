@@ -5,6 +5,7 @@ alias update-system='nma "sudo pacman -Syu";nma "yay -Syu"; pacman -Qqe > ~/pack
 alias todo="taskell $HOME/todo.md"
 alias notepad='nvim ~/Notes/notepad.md'
 alias lg='lazygit'
+alias share_remarkable='reStream.sh -s remarkable -p'
 
 alias yd='youtube-dl'
 
