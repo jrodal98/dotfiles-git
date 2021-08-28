@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: jrodal/nvim
+  IMAGE_NAME: jrodal98/nvim
 
 jobs:
   build-and-push-image:
