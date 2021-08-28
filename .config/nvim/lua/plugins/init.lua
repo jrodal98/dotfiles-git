@@ -17,6 +17,10 @@ return packer.startup(function()
    }
 
    use {
+      "nvim-lua/plenary.nvim",
+   }
+
+   use {
       "wbthomason/packer.nvim",
       event = "VimEnter",
    }
@@ -38,8 +42,8 @@ return packer.startup(function()
    }
 
    use {
-      "glepnir/galaxyline.nvim",
-      disable = not plugin_status.galaxyline,
+      "famiu/feline.nvim",
+      disable = not plugin_status.feline,
       after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.statusline"
@@ -49,39 +53,12 @@ return packer.startup(function()
    use {
       "akinsho/bufferline.nvim",
       disable = not plugin_status.bufferline,
-      after = "galaxyline.nvim",
+      after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.bufferline"
       end,
       setup = function()
          require("core.mappings").bufferline()
-      end,
-   }
-
-   use {
-      "nvim-lua/plenary.nvim",
-      after = "bufferline.nvim",
-   }
-
-   -- git stuff
-   use {
-      "lewis6991/gitsigns.nvim",
-      disable = not plugin_status.gitsigns,
-      after = "plenary.nvim",
-      config = function()
-         require "plugins.configs.gitsigns"
-      end,
-   }
-
-   -- load autosave only if its globally enabled
-   use {
-      disable = not plugin_status.autosave,
-      "Pocco81/AutoSave.nvim",
-      config = function()
-         require "plugins.configs.autosave"
-      end,
-      cond = function()
-         return require("core.utils").load_config().options.plugin.autosave == true
       end,
    }
 
@@ -103,7 +80,6 @@ return packer.startup(function()
       end,
    }
 
-   -- lsp stuff
    use {
       "nvim-treesitter/nvim-treesitter",
       event = "BufRead",
@@ -112,9 +88,43 @@ return packer.startup(function()
       end,
    }
 
+   -- git stuff
+   use {
+      "lewis6991/gitsigns.nvim",
+      disable = not plugin_status.gitsigns,
+      opt = true,
+      config = function()
+         require "plugins.configs.gitsigns"
+      end,
+      setup = function()
+         require("core.utils").packer_lazy_load "gitsigns.nvim"
+      end,
+   }
+
+   -- smooth scroll
+   use {
+      "karb94/neoscroll.nvim",
+      disable = not plugin_status.neoscroll,
+      opt = true,
+      config = function()
+         require("plugins.configs.others").neoscroll()
+      end,
+      setup = function()
+         require("core.utils").packer_lazy_load "neoscroll.nvim"
+      end,
+   }
+
+   -- lsp stuff
    use {
       "kabouzeid/nvim-lspinstall",
-      event = "BufRead",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "nvim-lspinstall"
+         -- reload the current file so lsp actually starts for it
+         vim.defer_fn(function()
+            vim.cmd "silent! e %"
+         end, 0)
+      end,
    }
 
    use {
@@ -135,11 +145,23 @@ return packer.startup(function()
    }
 
    use {
-      "onsails/lspkind-nvim",
-      disable = not plugin_status.lspkind,
-      event = "BufEnter",
+      "andymass/vim-matchup",
+      disable = not plugin_status.vim_matchup,
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-matchup"
+      end,
+   }
+
+   -- load autosave only if its globally enabled
+   use {
+      disable = not plugin_status.autosave,
+      "Pocco81/AutoSave.nvim",
       config = function()
-         require("plugins.configs.others").lspkind()
+         require("plugins.configs.others").autosave()
+      end,
+      cond = function()
+         return require("core.utils").load_config().options.plugin.autosave == true
       end,
    }
 
@@ -155,52 +177,56 @@ return packer.startup(function()
       end,
    }
 
-   -- load compe in insert mode only
+   -- load luasnips + cmp related in insert mode only
+
    use {
-      "hrsh7th/nvim-compe",
+      "hrsh7th/nvim-cmp",
       event = "InsertEnter",
       config = function()
-         require "plugins.configs.compe"
+         require "plugins.configs.cmp"
       end,
-      wants = "LuaSnip",
-      requires = {
-         {
-            "L3MON4D3/LuaSnip",
-            wants = "friendly-snippets",
-            event = "InsertCharPre",
-            config = function()
-               require "plugins.configs.luasnip"
-            end,
-         },
-         {
-            "rafamadriz/friendly-snippets",
-            event = "InsertCharPre",
-         },
-      },
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      config = function()
+         require "plugins.configs.luasnip"
+      end,
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "LuaSnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "rafamadriz/friendly-snippets",
+      after = "cmp-buffer",
    }
 
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      after = "nvim-compe",
+      after = "nvim-cmp",
       config = function()
-         require "plugins.configs.autopairs"
-      end,
-   }
-
-   use {
-      "andymass/vim-matchup",
-      disable = not plugin_status.vim_matchup,
-      event = "CursorMoved",
-   }
-
-   -- smooth scroll
-   use {
-      "karb94/neoscroll.nvim",
-      disable = not plugin_status.neoscroll,
-      event = "WinScrolled",
-      config = function()
-         require("plugins.configs.others").neoscroll()
+         require("plugins.configs.others").autopairs()
       end,
    }
 
@@ -247,7 +273,7 @@ return packer.startup(function()
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
-      cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = function()
          require "plugins.configs.nvimtree"
       end,

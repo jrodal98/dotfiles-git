@@ -1,5 +1,6 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, lspinstall = pcall(require, "lspinstall")
+
 if not (present1 or present2) then
    return
 end
@@ -40,7 +41,21 @@ local function on_attach(_, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+   properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+   },
+}
 
 -- lspInstall + lspconfig stuff
 
@@ -53,12 +68,18 @@ local function setup_servers()
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
             -- root_dir = vim.loop.cwd,
          }
       elseif lang == "lua" then
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
             settings = {
                Lua = {
                   diagnostics = {
@@ -108,6 +129,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    signs = true,
    underline = true,
    update_in_insert = false, -- update diagnostics insert mode
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+   border = "single",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+   border = "single",
 })
 
 -- suppress error messages from lang servers

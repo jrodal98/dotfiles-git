@@ -1,17 +1,9 @@
--- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
-
 local M = {}
-
-    -- NOTE paste these into mappings.lua after updating chad nvim
-      -- map("n", "<C-Left>", ":vertical resize +3<CR>", opt)
-      -- map("n", "<C-Right>", ":vertical resize -3<CR>", opt)
-      -- map("n", "<C-Up>", ":resize +3<CR>", opt)
-      -- map("n", "<C-Down>", ":resize -3<CR>", opt)
-
+M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
+   italic_comments = true,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "tokyonight",
@@ -36,7 +28,12 @@ M.ui.plugin = {
    statusline = {
       -- these are filetypes, not pattern matched
       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
-      hidden = {},
+      hidden = {
+         "help",
+         "dashboard",
+         "NvimTree",
+         "terminal",
+      },
       shown = {},
       -- default, round , slant , block , arrow
       style = "default",
@@ -47,6 +44,8 @@ M.ui.plugin = {
 M.options = {
    clipboard = "unnamedplus",
    cmdheight = 1,
+   copy_cut = true, -- copy cut text ( x key ), visual and normal mode
+   copy_del = false, -- copy deleted text ( dd key ), visual and normal mode
    expandtab = true,
    hidden = true,
    ignorecase = true,
@@ -61,7 +60,7 @@ M.options = {
    smartindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
-   relativenumber = false,
+   relativenumber = true,
    ruler = false,
    updatetime = 250,
    -- used for updater
@@ -78,7 +77,7 @@ M.options.plugin = {
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   autosave = true, -- to autosave files
+   autosave = false, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
@@ -86,15 +85,15 @@ M.plugin_status = {
    comment = true, -- universal commentor
    dashboard = true, -- a nice looking dashboard
    esc_insertmode = true, -- escape from insert mode using custom keys
-   galaxyline = true, -- statusline
+   feline = true, -- statusline
    gitsigns = true, -- gitsigns in statusline
    lspkind = true, -- lsp enhancements
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
-   telescope_media = true, -- see media files in telescope picker
-   truezen = true, -- no distraction mode for nvim
-   vim_fugitive = true, -- git in nvim
+   telescope_media = false, -- see media files in telescope picker
+   truezen = false, -- no distraction mode for nvim
+   vim_fugitive = false, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }
 
@@ -119,7 +118,7 @@ M.mappings = {
    new_buffer = "<S-t>", -- open a new buffer
    new_tab = "<C-t>b", -- open a new vim tab
    save_file = "<leader>w", -- save file using :w
-   -- theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
+   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
 
    -- terminal related mappings
    terminal = {
@@ -134,7 +133,7 @@ M.mappings = {
       -- below three are for spawning terminals
       new_horizontal = "<leader>th",
       new_vertical = "<leader>tv",
-      new_window = "<leader>tw",
+      new_window = "<leader>tt",
    },
 
    -- update nvchad from nvchad, chadness 101
@@ -153,21 +152,23 @@ M.mappings.plugin = {
       user_keys = "<leader>uk",
    },
    comment = {
-      toggle = "gcc", -- trigger comment on a single/selected lines/number prefix
+      toggle = "<C-/>", -- trigger comment on a single/selected lines/number prefix
    },
    dashboard = {
       bookmarks = "<leader>bm",
       new_file = "<leader>fn", -- basically create a new buffer
       open = "<leader>db", -- open dashboard
-      session_load = "<leader>l", -- load a saved session
-      session_save = "<leader>s", -- save a session
+      session_load = "<leader>sl", -- load a saved session
+      session_save = "<leader>ss",
    },
    -- note: this is an edditional mapping to escape, escape key will still work
    better_escape = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-      toggle = "<C-n>", -- file manager
+      -- file tree
+      toggle = "<C-n>",
+      focus = "<C-S-n>", -- disabling this binding doesn't work for some reason, so we do something really stupid
    },
    neoformat = {
       format = "<leader>fm",
@@ -175,6 +176,7 @@ M.mappings.plugin = {
    telescope = {
       buffers = "<leader>fb",
       find_files = "<leader>ff",
+      find_hiddenfiles = "<leader>fa",
       git_commits = "<leader>cm",
       git_status = "<leader>gt",
       help_tags = "<leader>fh",
@@ -198,4 +200,29 @@ M.mappings.plugin = {
    },
 }
 
+-- user custom mappings
+-- e.g: name = { "mode" , "keys" , "cmd" , "options"}
+-- name: can be empty or something unique with repect to other custom mappings
+--    { mode, key, cmd } or name = { mode, key, cmd }
+-- mode: usage: mode or { mode1, mode2 }, multiple modes allowed, available modes => :h map-modes,
+-- keys: multiple keys allowed, same synxtax as modes
+-- cmd:  for vim commands, must use ':' at start and add <CR> at the end if want to execute
+-- options: see :h nvim_set_keymap() opts section
+M.custom.mappings = {
+   resize_left = {"n", "<C-Left>", ":vertical resize +3<CR>"},
+   resize_right = {"n", "<C-Right>", ":vertical resize -3<CR>"},
+   resize_up = {"n", "<C-Up>", ":resize +3<CR>"},
+   resize_down = {"n", "<C-Down>", ":resize -3<CR>"},
+   window_cycle = {"n", "<CR>", "<C-w>w"},
+
+   -- don't jump to next word when matching with *
+   no_jump_on_match = {"n", "*", "m`:keepjumps normal! *``<cr>"},
+
+-- substitute word and then enable repeat operator to replace next occurence of the word
+   substitute_word = {"n", "<leader>sw", "*cgn", { noremap = false }},
+
+   spellcheck = {"n", "<leader>sc", ":setlocal spell! spelllang=en_us<CR>"}
+}
+
 return M
+
