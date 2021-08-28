@@ -7,7 +7,7 @@ COPY . .
 # RUN git clone https://github.com/jrodal98/dotfiles /tmp/dotfiles && mkdir -p ~/.config/nvim && mv /tmp/dotfiles/.config/nvim ~/.config/ && rm -rf /tmp/dotfiles
 
 # wait for packer downloads to finish
-RUN nvim --headless +PackerSync +"sleep 30" +qall
+RUN nvim --headless +PackerSync +"sleep 120" +qall
 
 WORKDIR /project
 
