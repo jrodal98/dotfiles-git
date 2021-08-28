@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![NVIM Docker Image CI](https://github.com/jrodal98/dotfiles/actions/workflows/nvim-docker-image.yml/badge.svg)](https://github.com/jrodal98/dotfiles/actions/workflows/nvim-docker-image.yml)
+
 ![alt text](Pictures/screenshots/desktop.png "My desktop")
 
 This repo contains most of my configuration files for my Arch Linux + i3Gaps ThinkPad T470s laptop.  Currently, my configuration for the following software is in the repo:
