@@ -4,14 +4,23 @@
 
 This repo contains most of my configuration files for my Arch Linux + i3Gaps ThinkPad T470s laptop.  Currently, my configuration for the following software is in the repo:
 
-1) i3-gaps
-2) polybar
-3) ranger
-4) zsh
-5) st terminal
-6) nvim
-7) dunst
-8) alacritty
+* window managers
+  * i3-gaps
+  * qtile
+* status bars
+  * polybar
+* file explorers
+  * nnn
+* shells
+  * zsh
+* terminal emulators
+  * kitty
+  * alacritty
+  * st
+* text editors
+  * neovim v0.5
+* misc
+  * dunst
 
 and probably other things.
 
