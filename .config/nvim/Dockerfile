@@ -9,7 +9,7 @@ COPY . .
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'silent PackerSync'
 
 # install tree sitters (sleep hack is needed to let vim start up and also finish the async installs)
-RUN nvim --headless +"sleep 5" +"silent TSInstall python bash" +"silent LspInstall python" +"silent LspInstall bash" +"sleep 60" +qa
+RUN nvim --headless +"sleep 10" +"silent TSInstall python bash" +"silent LspInstall python" +"silent LspInstall bash" +"sleep 120" +qa
 
 WORKDIR /project
 
