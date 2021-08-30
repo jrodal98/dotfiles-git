@@ -4,10 +4,12 @@ RUN apk --no-cache add git neovim bash nodejs npm ripgrep alpine-sdk
 
 WORKDIR /root/.config/nvim
 COPY . .
-# RUN git clone https://github.com/jrodal98/dotfiles /tmp/dotfiles && mkdir -p ~/.config/nvim && mv /tmp/dotfiles/.config/nvim ~/.config/ && rm -rf /tmp/dotfiles
 
-# wait for packer downloads to finish
-RUN nvim --headless +PackerSync +"sleep 120" +qall
+# install packer and plugins
+RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'silent PackerSync'
+
+# install tree sitters (sleep hack is needed to let vim start up and also finish the async installs)
+RUN nvim --headless +"sleep 5" +"silent TSInstall python bash" +"silent LspInstall python" +"silent LspInstall bash" +"sleep 60" +qa
 
 WORKDIR /project
 

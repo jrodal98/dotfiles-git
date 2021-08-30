@@ -152,7 +152,7 @@ M.mappings.plugin = {
       user_keys = "<leader>uk",
    },
    comment = {
-      toggle = "<C-/>", -- trigger comment on a single/selected lines/number prefix
+      toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
    },
    dashboard = {
       bookmarks = "<leader>bm",
@@ -161,14 +161,14 @@ M.mappings.plugin = {
       session_load = "<leader>sl", -- load a saved session
       session_save = "<leader>ss",
    },
-   -- note: this is an edditional mapping to escape, escape key will still work
+   -- note: this is an additional mapping to escape, escape key will still work
    better_escape = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
       -- file tree
       toggle = "<C-n>",
-      focus = "<C-S-n>", -- disabling this binding doesn't work for some reason, so we do something really stupid
+      focus = "<leader>e", -- disabling this binding doesn't work for some reason
    },
    neoformat = {
       format = "<leader>fm",
