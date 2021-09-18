@@ -102,7 +102,7 @@ M.plugin_status = {
 M.mappings = {
    -- close current focused buffer
    close_buffer = "<leader>x",
-   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
+   copy_whole_file = "<leader>a", -- copy all contents of the current buffer
 
    -- navigation in insert mode, only if enabled in options
    insert_nav = {
@@ -118,7 +118,7 @@ M.mappings = {
    new_buffer = "<S-t>", -- open a new buffer
    new_tab = "<C-t>b", -- open a new vim tab
    save_file = "<leader>w", -- save file using :w
-   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
+   theme_toggler = "<leader>ts", -- for theme toggler, see in ui.theme_toggler
 
    -- terminal related mappings
    terminal = {
@@ -182,7 +182,7 @@ M.mappings.plugin = {
       help_tags = "<leader>fh",
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
-      -- themes = "<leader>th",
+      themes = "<leader>ts",
    },
    telescope_media = {
       media_files = "<leader>fp",

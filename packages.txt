@@ -97,6 +97,7 @@ git-delta
 glibc
 gnome-disk-utility
 gnome-keyring
+gnome-network-displays
 gnu-netcat
 google-chrome
 gotop-bin
@@ -200,6 +201,7 @@ mhwd
 mhwd-db
 minecraft-launcher
 minicom
+miraclecast-git
 mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
@@ -300,7 +302,6 @@ simplescreenrecorder
 snapd
 spectre-meltdown-checker
 speedtest-cli
-spotify-tui-bin
 spotifyd-bin-full
 sshfs
 stacer
