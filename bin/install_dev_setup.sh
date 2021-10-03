@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# www.jrodal.dev
+# www.jrodal.com
 
 # get started with my neovim and zsh setup quickly.
 

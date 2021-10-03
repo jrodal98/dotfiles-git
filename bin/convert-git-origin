@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# www.jrodal.dev
+# www.jrodal.com
 
 # Detects whether a git remote origin is https or ssh, and then changes 
 # the origin to the other one.

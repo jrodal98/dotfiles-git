@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# www.jrodal.dev
+# www.jrodal.com
 
 url=$(github-to-raw "$(xclip -o)")
 curl -O "$url"
