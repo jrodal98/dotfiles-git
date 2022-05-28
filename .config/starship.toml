@@ -1,56 +1,10 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Use custom format
 format = """
 [┌─](bold pink)\
-$username\
-$hostname\
-$shlvl\
-$kubernetes\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$hg_branch\
-$docker_context\
-$package\
-$cmake\
-$dart\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$nim\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
-$python\
-$ruby\
-$rust\
-$swift\
-$terraform\
-$zig\
-$nix_shell\
-$conda\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$env_var\
-$crystal\
-$custom\
-$cmd_duration\
-$line_break\
-$lua\
-$jobs\
-$battery\
-$time\
-$status\
+$all\
 [└─](bold pink)$character"""
 
 # Disable the newline at the start of the prompt
@@ -72,3 +26,11 @@ disabled = false
 [character]
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
+vicmd_symbol = "[VIM](bold green)"
+
+[python]
+# Only use the `python3` binary to get the version.
+python_binary = "python3"
+
+[hg_branch]
+disabled = false
