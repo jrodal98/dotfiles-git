@@ -1,7 +1,5 @@
 # Dotfiles
 
-[![NVIM Docker Image CI](https://github.com/jrodal98/dotfiles/actions/workflows/nvim-docker-image.yml/badge.svg)](https://github.com/jrodal98/dotfiles/actions/workflows/nvim-docker-image.yml)
-
 ![alt text](Pictures/screenshots/desktop.png "My desktop")
 
 This repo contains most of my configuration files for my Arch Linux + i3Gaps ThinkPad T470s laptop.  Currently, my configuration for the following software is in the repo:
@@ -11,24 +9,26 @@ This repo contains most of my configuration files for my Arch Linux + i3Gaps Thi
   * qtile
 * status bars
   * polybar
+  * bumblebee
 * file explorers
   * nnn
+  * ranger
 * shells
   * zsh
+  * zinit (manager)
+  * starship (prompt)
 * terminal emulators
   * kitty
   * alacritty
   * st
 * text editors
-  * neovim v0.5: `docker pull ghcr.io/jrodal98/nvim:latest` for a docker image compatible with amd64 and arm64 architectures
+  * neovim v0.7: `docker pull ghcr.io/jrodal98/nvim:latest` for a docker image compatible with amd64 and arm64 architectures
 * misc
   * dunst
 
 and probably other things.
 
 - A list of all of my pacman packages is in [packages.txt](packages.txt)
-
-More recent pictures and a more complete software list can be seen on [my website](https://www.jrodal.com/configuration.html).
 
 ## dotfile management
 
