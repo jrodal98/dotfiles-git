@@ -29,6 +29,15 @@ return {
          },
       },
    },
+   mouse_bindings = {
+       --- Triple click on one character of the command output
+       --  to select all of the output
+      {
+         event = { Down = { streak = 3, button = "Left" } },
+         action = { SelectTextAtMouseCursor = "SemanticZone" },
+         mods = "NONE",
+      },
+   },
    hide_tab_bar_if_only_one_tab = true,
 
    -- quick select mode (CTRL-SHIFT-SPACE)
