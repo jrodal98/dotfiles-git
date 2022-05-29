@@ -142,6 +142,7 @@ gettext
 ghostscript
 gimp
 git
+git-delta
 gksu
 glances
 gnome-network-displays

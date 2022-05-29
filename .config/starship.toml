@@ -26,7 +26,7 @@ disabled = false
 [character]
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
-vicmd_symbol = "[VIM](bold green)"
+vicmd_symbol = "[<](bold green)"
 
 [python]
 # Only use the `python3` binary to get the version.
