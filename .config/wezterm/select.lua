@@ -1,26 +1,35 @@
 local select = {}
 
+local url_regex = "\\b\\w+://(?:[\\w.-]+)\\.[a-z]{2,15}\\S*\\b"
+local ip_addr_regex = "\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b"
+local diff_regex = "\\b([dD]\\d+)\\b"
+
 -- quick select mode (CTRL-SHIFT-SPACE)
--- defaults include URLs, paths, ip addrs, etc
 select.quick_select_patterns = {
    -- match urls
-   "https?://\\S+",
+   url_regex,
+   -- match ip addresses
+   ip_addr_regex,
    -- match diffs
-   "[dD]\\d+",
+   diff_regex,
    -- match tasks
-   "[tT]\\d+",
+   "\\b([tT]\\d+)\\b",
 }
 
 select.hyperlink_rules = {
    -- Linkify things that look like URLs
-   -- This is actually the default if you don't specify any hyperlink_rules
    {
-      regex = "\\b\\w+://(?:[\\w.-]+)\\.[a-z]{2,15}\\S*\\b",
+      regex = url_regex,
+      format = "$0",
+   },
+   -- Linkify v4 ip addresses
+   {
+      regex = ip_addr_regex,
       format = "$0",
    },
    -- make diffs clickable
    {
-      regex = "\\b[dD](\\d+)\\b",
+      regex = diff_regex,
       format = "https://internalfb.com/diff/$0",
    },
    -- make tasks clickable
