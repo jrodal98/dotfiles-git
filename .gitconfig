@@ -1,22 +1,20 @@
 [user]
-	name = Jacob Rodal
-	email = dev+github@jrodal.com
+  name = Jacob Rodal
+  email = dev+github@jrodal.com
 [core]
-    pager = delta
+  pager = delta
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    features = line-numbers decorations
-    whitespace-error-style = 22 reverse
-	side-by-side = true
+  features = line-numbers decorations
+  whitespace-error-style = 22 reverse
+  side-by-side = true
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = yellow box
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
 [diff]
-    colorMoved = default
-[merge]
-	tool = meld
+  colorMoved = default
 [mergetool]
-	prompt = false
+  prompt = false
