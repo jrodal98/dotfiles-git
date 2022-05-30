@@ -1,3 +1,4 @@
+alias nvim='env TERM=wezterm nvim'
 alias copy_to_clipboard='xclip -selection clipboard'
 alias paste_from_clipboard='xclip -o -selection clipboard'
 alias fuck='eval "sudo $(fc -ln -1)"'

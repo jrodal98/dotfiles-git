@@ -13,8 +13,4 @@ return {
    ----------- Selection ----------
    quick_select_patterns = select.quick_select_patterns,
    hyperlink_rules = select.hyperlink_rules,
-   ----------- MISC ----------
-   -- run ./bin/install_wezterm_terminfo.sh
-   -- on local and remote machines
-   term = "wezterm",
 }
