@@ -1,12 +1,13 @@
 local bindings = require "bindings"
 local select = require "select"
+local aesthetics = require "aesthetics"
 
 return {
    ----------- Aesthetics ----------
-   -- color_scheme = "tokyonight",
-   window_background_opacity = 0.75,
-   hide_tab_bar_if_only_one_tab = true,
-   font_size = 16,
+   window_background_opacity = aesthetics.window_background_opacity,
+   hide_tab_bar_if_only_one_tab = aesthetics.hide_tab_bar_if_only_one_tab,
+   font_size = aesthetics.font_size,
+   window_decorations = aesthetics.window_decorations,
    ----------- Bindings ----------
    keys = bindings.keys,
    mouse_bindings = bindings.mouse,
