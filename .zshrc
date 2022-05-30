@@ -20,8 +20,6 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export GIT_EDITOR='nvim'
 export TERMINAL='wezterm'
-# necessary for undercurl support (red lines under errors in code)
-alias nvim='TERM=wezterm nvim'
 alias nnn='nnn -e'
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_BMS='v:~/Videos;h:~;p:~/Projects;s:~/School'
