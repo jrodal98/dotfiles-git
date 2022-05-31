@@ -14,4 +14,7 @@ return {
    ----------- Selection ----------
    quick_select_patterns = select.quick_select_patterns,
    hyperlink_rules = select.hyperlink_rules,
+   ----------- Misc ----------
+   -- prevents terminal hanging when exiting with ctrl-d
+   exit_behavior = "Close",
 }
