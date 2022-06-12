@@ -33,6 +33,7 @@ arcolinux-hblock-git
 arcolinux-keyring
 arcolinux-mirrorlist-git
 arcolinux-neofetch-git
+arcolinux-pamac-all
 arcolinux-paru-git
 arcolinux-pipemenus-git
 arcolinux-plasma-dconf-git
@@ -285,7 +286,6 @@ oxy-neon
 p7zip
 packagekit-qt5
 pacman
-pamac-all
 paper-icon-theme
 papirus-icon-theme
 partclone
