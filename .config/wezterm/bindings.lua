@@ -1,5 +1,6 @@
 local wezterm = require "wezterm"
 local select = require "select"
+local events = require "events"
 
 local META = "CTRL|SHIFT|ALT|SUPER"
 
@@ -38,6 +39,8 @@ bindings.keys = {
       mods = META,
       action = "QuickSelect",
    },
+   { key = "v", mods = META, action = wezterm.action.EmitEvent(events.open_pane_in_vim) },
+   { key = "v", mods = "CTRL|SHIFT", action = wezterm.action.EmitEvent(events.open_pane_in_vim) },
 }
 
 bindings.key_tables = {
@@ -57,7 +60,7 @@ bindings.key_tables = {
       },
       -- Enter search mode to edit the pattern.
       -- When the search pattern is an empty string the existing pattern is preserved
-      { key = "/", mods = "NONE", action = wezterm.action { Search = { CaseInSensitiveString = ""} } },
+      { key = "/", mods = "NONE", action = wezterm.action { Search = { CaseInSensitiveString = "" } } },
       -- navigate any search mode results
       { key = "n", mods = "NONE", action = wezterm.action { CopyMode = "NextMatch" } },
       { key = "N", mods = "SHIFT", action = wezterm.action { CopyMode = "PriorMatch" } },
