@@ -499,6 +499,7 @@ yakuake
 yay-bin
 youtube-dl
 zafiro-icon-theme
+zellij
 zenity
 zsh
 zsh-completions

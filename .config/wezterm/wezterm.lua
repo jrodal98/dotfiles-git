@@ -10,6 +10,7 @@ return {
    window_decorations = aesthetics.window_decorations,
    ----------- Bindings ----------
    keys = bindings.keys,
+   key_tables = bindings.key_tables,
    mouse_bindings = bindings.mouse,
    ----------- Selection ----------
    quick_select_patterns = select.quick_select_patterns,
