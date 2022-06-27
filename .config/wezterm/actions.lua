@@ -5,6 +5,13 @@ local os = require "os"
 
 local actions = {}
 
+local nvim
+if wezterm.hostname() == "jrodal-mbp" then
+   nvim = "/usr/local/bin/nvim"
+else
+   nvim = "nvim"
+end
+
 actions.open_url_action = wezterm.action.QuickSelectArgs {
    label = "open url",
    patterns = select.quick_select_patterns,
@@ -35,7 +42,7 @@ actions.open_pane_in_vim = wezterm.action_callback(function(window, pane)
    -- Open a new window running vim and tell it to open the file
    window:perform_action(
       wezterm.action.SpawnCommandInNewWindow {
-         args = { "nvim", name },
+         args = { nvim, name },
       },
       pane
    )
