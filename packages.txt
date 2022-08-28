@@ -249,6 +249,7 @@ moka-icon-theme-git
 mpv
 mtools
 mtpfs
+mullvad-vpn-bin
 nano
 nbd
 ndisc6
@@ -295,6 +296,7 @@ partitionmanager
 paru-bin
 pass
 patch
+pavucontrol
 pcsclite
 pkgconf
 plasma-framework
@@ -306,7 +308,6 @@ poppler-qt5
 ppp
 pptpclient
 progress
-pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pyside2
