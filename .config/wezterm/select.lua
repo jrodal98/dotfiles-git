@@ -32,14 +32,4 @@ select.hyperlink_rules = {
    },
 }
 
--- used to transform quick select url patterns -> real urls
-select.transform_url = function(selection)
-   local diff_paste_task = string.match(selection, "[dDpPtT]%d+")
-   if diff_paste_task then
-      return "https://fburl.com/b/" .. diff_paste_task
-   end
-
-   return selection
-end
-
 return select

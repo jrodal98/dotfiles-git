@@ -17,10 +17,8 @@ actions.open_url_action = wezterm.action.QuickSelectArgs {
    patterns = select.quick_select_patterns,
    action = wezterm.action_callback(function(window, pane)
       local url = window:get_selection_text_for_pane(pane)
-      wezterm.log_info("read url: " .. url)
-      local transformed_url = select.transform_url(url)
-      wezterm.log_info("opening: " .. transformed_url)
-      wezterm.open_with(transformed_url)
+      wezterm.log_info("opening url: " .. url)
+      wezterm.open_with(url)
    end),
 }
 
