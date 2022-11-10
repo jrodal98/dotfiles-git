@@ -41,6 +41,7 @@ if ! zgen saved; then
   # plugins
 
   zgen oh-my-zsh plugins/extract
+  zgen oh-my-zsh plugins/vi-mode
   zgen oh-my-zsh plugins/colored-man-pages
   zgen oh-my-zsh plugins/autojump # note: install autojump first
 
