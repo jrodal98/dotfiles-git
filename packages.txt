@@ -103,6 +103,7 @@ dhclient
 dialog
 diffutils
 discord
+discord-game-sdk
 dmraid
 dnsmasq
 docker
@@ -147,6 +148,7 @@ git
 git-delta
 gksu
 glances
+glow
 gnome-network-displays
 gnu-netcat
 gocryptfs
@@ -183,6 +185,7 @@ htop
 hugo
 hw-probe
 hwinfo
+hyperfine
 imagemagick
 intltool
 inxi
@@ -226,6 +229,7 @@ linux-headers
 logrotate
 lsb-release
 lsscsi
+lua-language-server
 lvm2
 m4
 make
@@ -298,6 +302,7 @@ pass
 patch
 pavucontrol
 pcsclite
+piper
 pkgconf
 plasma-framework
 plasma-meta
@@ -399,7 +404,7 @@ ttf-linux-libertine-g
 ttf-meslo-nerd-font-powerlevel10k
 ttf-monofur
 ttf-ms-fonts
-ttf-nerd-fonts-symbols-mono
+ttf-nerd-fonts-symbols-1000-em
 ttf-proggy-clean
 ttf-roboto
 ttf-roboto-mono

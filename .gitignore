@@ -1,3 +1,4 @@
 .config/Bitwarden
 .config/BraveSoftware
 .config/Signal
+.env

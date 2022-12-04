@@ -62,3 +62,5 @@ bindkey '^j' autosuggest-accept
 eval "$(starship init zsh)"
 
 eval "$(mcfly init zsh)"
+
+touch "${HOME}/.env" && source "${HOME}/.env"
