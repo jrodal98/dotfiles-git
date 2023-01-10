@@ -1,3 +1,5 @@
+require "events"
+
 local bindings = require "bindings"
 local select = require "select"
 local aesthetics = require "aesthetics"

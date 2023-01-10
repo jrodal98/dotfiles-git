@@ -1,5 +1,4 @@
 local wezterm = require "wezterm"
-local select = require "select"
 local actions = require "actions"
 
 local META = "CTRL|SHIFT|ALT|SUPER"
@@ -19,6 +18,16 @@ bindings.keys = {
       key = "e",
       mods = META,
       action = actions.open_url_action,
+   },
+   {
+      key = "b",
+      mods = "CTRL|SHIFT",
+      action = wezterm.action.EmitEvent "toggle-opacity",
+   },
+   {
+      key = "b",
+      mods = META,
+      action = wezterm.action.EmitEvent "toggle-opacity",
    },
    {
       key = "Space",
