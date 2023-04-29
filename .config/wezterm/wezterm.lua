@@ -3,8 +3,9 @@ require "events"
 local bindings = require "bindings"
 local select = require "select"
 local aesthetics = require "aesthetics"
+local misc = require "misc"
 
-return {
+local config = {
    ----------- Aesthetics ----------
    window_background_opacity = aesthetics.window_background_opacity,
    hide_tab_bar_if_only_one_tab = aesthetics.hide_tab_bar_if_only_one_tab,
@@ -19,5 +20,9 @@ return {
    hyperlink_rules = select.hyperlink_rules,
    ----------- Misc ----------
    -- prevents terminal hanging when exiting with ctrl-d
-   exit_behavior = "Close",
+   exit_behavior = misc.exit_behavior,
+   audible_bell = misc.audible_bell,
+   default_prog = misc.default_prog,
 }
+
+return config
