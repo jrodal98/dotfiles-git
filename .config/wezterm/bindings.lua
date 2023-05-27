@@ -34,9 +34,15 @@ bindings.keys = {
       mods = META,
       action = "QuickSelect",
    },
+   {
+      key = "s",
+      mods = META,
+      action = "QuickSelect",
+   },
    { key = "v", mods = META, action = actions.open_pane_in_vim },
    { key = "v", mods = "CTRL|SHIFT", action = actions.open_pane_in_vim },
    { key = "x", mods = META, action = wezterm.action.ActivateCopyMode },
+   { key = "c", mods = META, action = wezterm.action.ActivateCopyMode },
 }
 
 bindings.key_tables = {
