@@ -503,7 +503,6 @@ xorg-xwud
 yad
 yakuake
 yay-bin
-youtube-dl
 zafiro-icon-theme
 zellij
 zenity

@@ -8,7 +8,7 @@ alias notepad='nvim ~/Notes/notepad.md'
 alias lg='lazygit'
 alias share_remarkable='reStream.sh -s remarkable -p'
 
-alias yd='youtube-dl'
+alias yd='yt-dlp'
 
 export DOTBARE_DIR="$HOME/.dotfiles"
 export DOTBARE_TREE="$HOME"
