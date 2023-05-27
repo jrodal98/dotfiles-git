@@ -18,3 +18,5 @@
   colorMoved = default
 [mergetool]
   prompt = false
+[push]
+	autoSetupRemote = true
