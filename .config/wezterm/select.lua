@@ -7,6 +7,7 @@ local diff_paste_task_regex = "\\b([dDpPtT]\\d+)\\b"
 -- match username/project paths, e.g. wbthomason/packer.nvim
 local github_project_regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]]
 local scvm_regex = "\\bscvm\\d+\\.\\d+\\.\\S*\\b"
+local frecli_regex = "frecli cas download-action .*:145"
 
 -- quick select mode (CTRL-SHIFT-SPACE)
 select.quick_select_patterns = {
@@ -19,6 +20,8 @@ select.quick_select_patterns = {
    -- github_project_regex,
    -- match scvm hostnames
    scvm_regex,
+   -- match buck2 frecli commands
+   frecli_regex,
 }
 
 select.hyperlink_rules = wezterm.default_hyperlink_rules()
