@@ -6,11 +6,17 @@ local misc = {}
 misc.exit_behavior = "Close"
 misc.audible_bell = "Disabled"
 
-if wezterm.hostname() == "jrodal-850" then
-   misc.default_prog = { "pwsh", "-l" }
-elseif wezterm.hostname() == "jrodal-257" then
-   misc.default_prog = { "C:/Users/jrodal/.config/wezterm/bin/windows_default_shell.cmd" }
+local default_progs = {
+   ["jrodal-850"] = { "pwsh", "-l" },
+   ["jrodal-257"] = { "C:/Users/jrodal/.config/wezterm/bin/windows_default_shell.cmd" },
+   ["PW08WPZH"] = { "C:/Users/jrodal/.config/wezterm/bin/windows_default_shell.cmd" },
+}
+
+local hostname = wezterm.hostname()
+if default_progs[hostname] then
+   misc.default_prog = default_progs[hostname]
 else
    misc.default_prog = nil
 end
+
 return misc
