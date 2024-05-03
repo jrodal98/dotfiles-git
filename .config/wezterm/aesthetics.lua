@@ -4,7 +4,13 @@ local aesthetics = {}
 
 -- not actually using this right now since default looks better
 aesthetics.color_scheme = "tokyonight"
-aesthetics.window_background_opacity = 0.75
+
+if wezterm.hostname() == "PW08WPZH" then
+   aesthetics.window_background_opacity = 0
+else
+   aesthetics.window_background_opacity = 0.75
+end
+
 aesthetics.hide_tab_bar_if_only_one_tab = true
 
 if wezterm.hostname() == "jrodal-mbp" then
