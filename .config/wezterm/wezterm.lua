@@ -23,6 +23,7 @@ local config = {
    exit_behavior = misc.exit_behavior,
    audible_bell = misc.audible_bell,
    default_prog = misc.default_prog,
+   default_domain = misc.default_domain,
 }
 
 return config
