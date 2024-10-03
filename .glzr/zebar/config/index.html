@@ -143,23 +143,6 @@
             <div className="center"></div>
 
             <div className="right">
-              {output.glazewm && (
-                <>
-                  {output.glazewm.bindingModes.map((bindingMode) => (
-                    <button className="binding-mode" key={bindingMode.name}>
-                      {bindingMode.displayName ?? bindingMode.name}
-                    </button>
-                  ))}
-
-                  <button
-                    className={`tiling-direction nf ${output.glazewm.tilingDirection === "horizontal" ? "nf-md-swap_horizontal" : "nf-md-swap_vertical"}`}
-                    onClick={() =>
-                      output.glazewm.runCommand("toggle-tiling-direction")
-                    }
-                  ></button>
-                </>
-              )}
-
               {output.host && (
                 <div className="host">
                   <i className="nf nf-fa-laptop_code"></i>
@@ -210,6 +193,23 @@
                   <i className="nf nf-cod-calendar"></i>
                   {output.date.formatted}
                 </div>
+              )}
+
+              {output.glazewm && (
+                <>
+                  {output.glazewm.bindingModes.map((bindingMode) => (
+                    <button className="binding-mode" key={bindingMode.name}>
+                      {bindingMode.displayName ?? bindingMode.name}
+                    </button>
+                  ))}
+
+                  <button
+                    className={`tiling-direction nf ${output.glazewm.tilingDirection === "horizontal" ? "nf-md-swap_horizontal" : "nf-md-swap_vertical"}`}
+                    onClick={() =>
+                      output.glazewm.runCommand("toggle-tiling-direction")
+                    }
+                  ></button>
+                </>
               )}
             </div>
           </div>
