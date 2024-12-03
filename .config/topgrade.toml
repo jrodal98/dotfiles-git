@@ -1,3 +1,4 @@
+[misc]
 # Don't ask for confirmations
 assume_yes = true
 
@@ -11,7 +12,7 @@ disable = ["snap"]
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true

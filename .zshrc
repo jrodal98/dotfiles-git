@@ -56,11 +56,12 @@ if ! zgen saved; then
 fi
 
 bindkey -v
-# bind ctrl + space to accept autocomplete suggestion
-bindkey '^j' autosuggest-accept
+bindkey '^y' autosuggest-accept
+bindkey '^j' ignore
 
 eval "$(starship init zsh)"
 
 eval "$(mcfly init zsh)"
+eval "$(direnv hook zsh)"
 
 touch "${HOME}/.env" && source "${HOME}/.env"
