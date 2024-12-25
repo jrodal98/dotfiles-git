@@ -1,3 +1,10 @@
+# Archived
+
+Archived in favor of https://github.com/jrodal98/dotfiles because...
+
+- I want to start using gnu stow
+- Many of these dotfiles are no longer relevant, so I want to start with a (relatively) clean slate
+
 # Dotfiles
 
 ![alt text](Pictures/screenshots/desktop.png "My desktop")
